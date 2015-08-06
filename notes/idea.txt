@@ -38,5 +38,7 @@
 
 * Basic User Functionality
 
-* Buyer
-* Seller
+    * Buyer / Consumer
+
+
+    * Seller / Brand
