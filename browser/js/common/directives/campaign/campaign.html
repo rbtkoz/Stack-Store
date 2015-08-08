@@ -1,7 +1,9 @@
 <section>
 	<img ng-src="{{product.imgUrl}}"/>
-	<p>{{product.title}}</p>
-	<p>Ends in {{product.duration}} days</p>
-	<p>{{product.shortDesc}}</p>
-    <button ui-sref="login">Bid</button>
+    <section class="description">
+        <p class ="title">{{product.title}}</p>
+        <p>{{product.shortDesc}}</p>
+        <p>Ends in {{product.duration}} days</p>
+        <button ui-sref="login">Bid</button>
+    </section>
 </section>
