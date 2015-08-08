@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var campaignSchema = require('./campaign')
 
 var schema = new mongoose.Schema({
+    name: String,
     email: {
         type: String
     },
@@ -72,4 +73,4 @@ schema.method('correctPassword', function (candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
 });
 
-mongoose.model('User', schema);
+module.exports = mongoose.model('User', schema);
