@@ -1,5 +1,4 @@
 
-
 app.directive('campaign',function(){
 	return {
 		restrict: 'E',
