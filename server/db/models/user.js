@@ -2,6 +2,7 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 var campaignSchema = require('./campaign')
+var bidSchema = require('./bid')
 
 var schema = new mongoose.Schema({
     name: String,
@@ -28,19 +29,11 @@ var schema = new mongoose.Schema({
     },
     campaigns: [campaignSchema],
     bids: [{
-        campaign: {type: mongoose.Schema.Types.ObjectId, ref: 'campaignSchema'},
-        bid: {type: Number, get: getPrice, set: setPrice},
-        time: {type: Date, default: Date.now}
+        bid_id: {type: mongoose.Schema.Types.ObjectId, ref: 'bidSchema'}
     }]
 });
 
-function getPrice(num){
-    return num
-};
 
-function setPrice(num){
-    return num
-};
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations
 // are all used for local authentication security.
