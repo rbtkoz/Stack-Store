@@ -7,28 +7,28 @@ var bid = Promise.promisifyAll(mongoose.model('bid'));
 var seedBids = function() {
     var bids = [
         {
-            user_id: "55c669f40c765fe2471494bf",
-            campaign_id: "",
+            user_id: null,
+            campaign_id: null,
             bidPrice: 5.00,
-            bidTime: new Date(2015, 07, 31)
+            bidTime: null
         },
         {
-            user_id: "55c669f40c765fe2471494bf",
-            campaign_id: "",
+            user_id: "55c654418f163b1ab580a977",
+            campaign_id: null,
             bidPrice: 10.00,
-            bidTime: new Date(2015, 07, 24)
+            bidTime: null
         },
         {
-            user_id: "55c669f40c765fe2471494bf",
-            campaign_id: "",
+            user_id: "55c654418f163b1ab580a977",
+            campaign_id: null,
             bidPrice: 15.00,
-            bidTime: new Date(2015, 07, 25)
+            bidTime: null
         },
         {
-            user_id: "55c669f40c765fe2471494bf",
-            campaign_id: "",
+            user_id: "55c654418f163b1ab580a977",
+            campaign_id: null,
             bidPrice: 20.00,
-            bidTime: new Date(2015, 06, 30)
+            bidTime: null
         }
     ];
 
