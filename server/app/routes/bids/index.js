@@ -34,11 +34,7 @@ Router.get("/", function(req, res, next){
 
 //Post route will require a complete bid object
 Router.post("/", function(req, res, next){
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> bid-routes
 	Bid.create(req.body, function(err, bid){
 		if (err) res.send({});
 
