@@ -9,7 +9,7 @@ Router.get("/", function(req, res, next){
 	if (err) return next(err);
 	//get all bids
 	if (req.query.user_id && !req.query.campaign_id){
-		User.find({user_id: req.query.user_id}, function(err, bids){
+		User.findById(req.query.user_id, function(err, bids){
 			res.json(bids);
 		});
 	}
