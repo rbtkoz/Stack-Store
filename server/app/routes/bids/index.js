@@ -33,23 +33,23 @@ Router.post("/", function(req, res, next){
 	if (err) return next(err);
 	Bid.create(req.body, function(err, bid){
 		if (err) res.send({});
+
 		async.parallel([
+		function(done) { 
 			Campaign.findByIdAndUpdate(bid.campaign_id, 
 			{$push: {bids: bid._id}}, 
 			{safe: true, upsert: true}, 
-			function(err, campaign){
-				//callback needed?
-			}),
+			done(err,campaign)
+		},
+		function(done){
 			User.findByIdAndUpdate(bid.user_id, 
 			{$push: {bids: bid._id}}, 
 			{safe: true, upsert: true}, 
-			function(err, user){
-				//callback needed?
-			})
-			],
-			function(err, done){
-				res.json(bid);
-			})
+			done(err, user))
+		}],
+		function(err, bid){
+			res.json(bid);
+		})
 		
 		
 		
