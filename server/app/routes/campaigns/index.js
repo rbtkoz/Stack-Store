@@ -9,3 +9,9 @@ router.get('/',function(req,res, next){
 		res.json(campaigns);
 	})
 })
+
+router.get('/:id',function(req,res, next){
+	CampaignModel.findById({_id:req.params.id}).then(function(campaign){
+		res.json(campaign);
+	})
+})

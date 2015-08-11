@@ -1,0 +1,16 @@
+<section>
+	<title>{{products.title}}</title>
+	<img ng-src='{{products.imgUrl}}'>
+	<!-- multiple images -->
+	<form ng-submit>
+    	Bid Price: <input type='number' min='0' step='1'placeholder='$'>
+    	<button ui-sref='login' class='btn btn-primary'>Bid</button>
+    </form>
+	<article>
+		{{products.longDesc}}
+	</article>
+<!-- 	<section>
+		{{product.question & answers}}
+	<section>
+ -->
+ </section>
