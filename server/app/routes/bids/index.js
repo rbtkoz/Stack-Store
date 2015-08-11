@@ -49,10 +49,7 @@ Router.post("/", function(req, res, next){
 		}],
 		function(err, bid){
 			res.json(bid);
-		})
-		
-		
-		
+		});	
 	})
 })
 
