@@ -6,7 +6,8 @@ var campaignSchema = new mongoose.Schema({
 	imgUrl:String,
 	shortDesc:String,
 	longDesc:String,
-	duration: Number
+	duration: Number,
+	
 });
 
 mongoose.model('Campaign', campaignSchema);

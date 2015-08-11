@@ -11,7 +11,7 @@ Router.get("/", function(req, res, next){
 	if (req.query.user_id && !req.query.campaign_id){
 		User.find({user_id: req.query.user_id}, function(err, bids){
 			res.json(bids);
-		}
+		});
 	}
 	if (req.query.campaign_id && !req.query.user_id){
 		Bid.find({campaign_id: req.query.campaign_id}, function(err, bids){
