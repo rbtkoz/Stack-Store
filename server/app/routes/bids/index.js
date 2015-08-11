@@ -39,7 +39,7 @@ Router.post("/", function(req, res, next){
 			Campaign.findByIdAndUpdate(bid.campaign_id, 
 			{$push: {bids: bid._id}}, 
 			{safe: true, upsert: true}, 
-			done(err,campaign)
+			done(err,campaign))
 		},
 		function(done){
 			User.findByIdAndUpdate(bid.user_id, 
