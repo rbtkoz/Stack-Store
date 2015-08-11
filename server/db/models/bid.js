@@ -17,4 +17,4 @@ function setPrice(num){
     return num
 };
 
-module.exports = mongoose.model('bidSchema', bidSchema);
+module.exports = mongoose.model('bid', bidSchema);
