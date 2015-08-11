@@ -6,11 +6,15 @@ var async = require('async');
 //bids 
 
 Router.get("/", function(req, res, next){
-	if (err) return next(err);
+	//if (err) return next(err);
 	//get all bids
-	if (req.query.user_id && !req.query.campaign_id){
+	
+	if (req.query.user_id && !(req.query.campaign_id)){
+		console.log('made it');
 		User.findById(req.query.user_id, function(err, bids){
+			console.log(bids);
 			res.json(bids);
+
 		});
 	}
 	if (req.query.campaign_id && !req.query.user_id){
@@ -30,7 +34,7 @@ Router.get("/", function(req, res, next){
 
 //Post route will require a complete bid object
 Router.post("/", function(req, res, next){
-	if (err) return next(err);
+	
 	Bid.create(req.body, function(err, bid){
 		if (err) res.send({});
 
