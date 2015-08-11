@@ -1,0 +1,18 @@
+<section>
+	<section ui-sref='detail({id: product._id})'> 
+		<img ng-src="{{product.imgUrl}}"/>
+		    <div class="description">
+		        <p class ="title">{{product.title}}</p>
+		        <p>{{product.shortDesc}}</p>
+		        <p>Ends in {{product.duration}} days</p>
+			</div>
+	</section>
+
+	<section class='quick-bid description'>
+	    <form ng-submit>
+	    	Bid Price: <input type='number' min='0' step='1'placeholder='$'>
+	    	<button ui-sref='login' class='btn btn-primary'>Bid</button>
+	    </form>
+	</section>
+   
+</section>
