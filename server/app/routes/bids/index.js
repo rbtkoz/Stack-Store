@@ -2,6 +2,7 @@ var Router = require('express').Router();
 var User = require('../../db/models/user.js');
 var Campaign = require('../../db/models/campaign.js');
 var Bid = require('../../db/models/bid.js');
+var async = require('async');
 //bids 
 
 Router.get("/", function(req, res, next){
@@ -27,10 +28,31 @@ Router.get("/", function(req, res, next){
 	}
 });
 
+//Post route will require a complete bid object
 Router.post("/", function(req, res, next){
+	if (err) return next(err);
 	Bid.create(req.body, function(err, bid){
-		if (err) return next(err);
-
+		if (err) res.send({});
+		async.parallel([
+			Campaign.findByIdAndUpdate(bid.campaign_id, 
+			{$push: {bids: bid._id}}, 
+			{safe: true, upsert: true}, 
+			function(err, campaign){
+				//callback needed?
+			}),
+			User.findByIdAndUpdate(bid.user_id, 
+			{$push: {bids: bid._id}}, 
+			{safe: true, upsert: true}, 
+			function(err, user){
+				//callback needed?
+			})
+			],
+			function(err, done){
+				res.json(bid);
+			})
+		
+		
+		
 	})
 })
 
