@@ -1,7 +1,7 @@
 var Router = require('express').Router();
-var User = require('../../db/models/user.js');
-var Campaign = require('../../db/models/campaign.js');
-var Bid = require('../../db/models/bid.js');
+var User = require('../../../db/models/user.js');
+var Campaign = require('../../../db/models/campaign.js');
+var Bid = require('../../../db/models/bid.js');
 var async = require('async');
 //bids 
 
