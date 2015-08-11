@@ -1,8 +1,11 @@
 'use strict';
 var crypto = require('crypto');
 var mongoose = require('mongoose');
+var campaignSchema = require('./campaign')
+var bidSchema = require('./bid')
 
 var schema = new mongoose.Schema({
+    name: String,
     email: {
         type: String
     },
@@ -23,8 +26,14 @@ var schema = new mongoose.Schema({
     },
     google: {
         id: String
-    }
+    },
+    campaigns: [campaignSchema],
+    bids: [{
+        bid_id: {type: mongoose.Schema.Types.ObjectId, ref: 'bidSchema'}
+    }]
 });
+
+
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations
 // are all used for local authentication security.
@@ -57,4 +66,4 @@ schema.method('correctPassword', function (candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
 });
 
-mongoose.model('User', schema);
+module.exports = mongoose.model('User', schema);

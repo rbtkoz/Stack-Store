@@ -48,3 +48,6 @@ We are a platform that enables vendors to capitalize on promotions
     * https://dribbble.com/shots/1180748-Shop-Gif
     * https://dribbble.com/shots/1166682-Product-Page/attachments/152171
     * https://dribbble.com/shots/684420-Shopgate/attachments/61722
+
+### The Idea
+Creating a marketplace for small stores to promote their inventory. Giving them functionality to. Up and down voting value.

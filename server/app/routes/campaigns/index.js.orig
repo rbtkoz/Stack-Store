@@ -1,0 +1,23 @@
+<<<<<<< HEAD
+'use strict';
+var router = require('express').Router();
+var mongoose = require('mongoose');
+var CampaignModel = mongoose.model('Campaign');
+module.exports = router;
+
+router.get('/',function(req,res, next){
+	CampaignModel.find({}).then(function(campaigns){
+		res.json(campaigns);
+	})
+})
+
+router.get('/:id',function(req,res, next){
+	CampaignModel.findById({_id:req.params.id}).then(function(campaign){
+		res.json(campaign);
+	})
+})
+=======
+var Router = require('express').Router();
+
+module.exports = Router
+>>>>>>> 554fd04c7d7631032c3ea2044e8c3ee8fb83e36d
