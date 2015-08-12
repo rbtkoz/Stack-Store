@@ -3,10 +3,10 @@
 var mongoose = require('mongoose');
 var campaignSchema = new mongoose.Schema({
 	title:String,
-	imgUrl:String,
+	imgUrl:[String],
 	shortDesc:String,
 	longDesc:String,
-	duration: Number,
+	duration: Number
 	
 });
 
