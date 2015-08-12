@@ -3,7 +3,7 @@
 @import "campaigns";
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
-section#home {
+section#home{
   padding: 0;
   margin: 0;
   list-style: none;
@@ -16,5 +16,18 @@ section#home {
   flex-wrap: wrap;
   justify-content: center;
 
+}
 
+div#main{
+  margin: 0px 50px;
+  padding:0;
+
+  h1{
+    padding: 10px 20px;
+    text-align: center;
+    font-family: 
+  }
+  article{
+    font-family: cursive;
+  }
 }
