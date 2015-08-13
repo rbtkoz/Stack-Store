@@ -1,36 +1,36 @@
 var Router = require('express').Router();
 var User = require('../../../db/models/user.js');
-var Campaign = require('../../../db/models/campaign.js');
+var Campaign = require('../../../db/models/campaign.model.js');
 var Bid = require('../../../db/models/bid.js');
 var async = require('async');
-//bids 
 
-Router.get("/", function(req, res, next){
-	//if (err) return next(err);
-	//get all bids
-	
-	if (req.query.user_id && !(req.query.campaign_id)){
-		console.log('made it');
-		User.findById(req.query.user_id, function(err, bids){
-			console.log(bids);
-			res.json(bids);
+// Get all of user's bids
+Router.get("user/:user_id", function(req, res, next){
+	User.findById(req.query.user_id, function(err, bids){
+		console.log(bids);
+		res.json(bids);
+	});
+});
 
-		});
-	}
-	if (req.query.campaign_id && !req.query.user_id){
-		Bid.find({campaign_id: req.query.campaign_id}, function(err, bids){
+//Get all bids from a campaign
+Router.get("campaign/:campaign_id", function(req, res, next){
+	Bid.find({campaign_id: req.query.campaign_id})
+		.limit(30)
+		.exec(function(err, bids){
+		res.json(bids);
+	})
+});
+
+//Get all bids from specific campaign and specific user
+Router.get("campaign/:campaign_id/:user_id", function(req, res, next){
+	Bid.find()
+		.where('campaign_id', req.query.campaign_id)
+		.where('user_id', req.query.user_id)
+		.exec(function(err,bids){
 			res.json(bids);
 		})
-	}
-	if (req.query.campaign_id && req.query.user_id){
-		Bid.find()
-			.where('campaign_id', req.query.campaign_id)
-			.where('user_id', req.query.user_id)
-			.exec(function(err,bids){
-				res.json(bids);
-			})
-	}
 });
+
 
 //Post route will require a complete bid object
 Router.post("/", function(req, res, next){
@@ -39,21 +39,21 @@ Router.post("/", function(req, res, next){
 		if (err) res.send({});
 
 		async.parallel([
-		function(done) { 
-			Campaign.findByIdAndUpdate(bid.campaign_id, 
-			{$push: {bids: bid._id}}, 
-			{safe: true, upsert: true}, 
+		function(done) {
+			Campaign.findByIdAndUpdate(bid.campaign_id,
+			{$push: {bids: bid._id}},
+			{safe: true, upsert: true},
 			done(err,campaign))
 		},
 		function(done){
-			User.findByIdAndUpdate(bid.user_id, 
-			{$push: {bids: bid._id}}, 
-			{safe: true, upsert: true}, 
+			User.findByIdAndUpdate(bid.user_id,
+			{$push: {bids: bid._id}},
+			{safe: true, upsert: true},
 			done(err, user))
 		}],
 		function(err, bid){
 			res.json(bid);
-		});	
+		});
 	})
 })
 
