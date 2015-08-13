@@ -1,33 +1,31 @@
 campaign {
-  flex: none;
   font-family: 'Roboto', sans-serif;
   margin:10px;
-  //padding: 10px;
+  text-align: center;
 
-  .description {
+  section.frame{
     background-color: #C0C0C0;
-    //padding: 20px;
-    text-align: center;
+    
+     .title {
+      font-size:1.4em;
+      font-weight: bold;
+      text-transform: uppercase;
+
+    }
+
+    img {
+      margin-bottom: 0px;
+      height: 320px;
+      width: 350px;
+    }
+
     p{
       margin: 0 0 0px;
     }
   }
 
-  .title {
-    font-size:1.4em;
-    font-weight: bold;
-    text-transform: uppercase;
-
-  }
-
-
-  img {
-    margin-bottom: 10px;
-    //padding: 0;
-  }
-
-  button{
-    margin-bottom: 10px;
+  form{
+    padding-bottom: 20px;
 
   }
 
