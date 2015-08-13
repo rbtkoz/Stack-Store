@@ -1,0 +1,27 @@
+<<<<<<< HEAD
+<section>
+	<section ui-sref='detail({id: product._id})'>
+		<img ng-src="{{product.imgUrl[0]}}"/>
+		    <div class="description">
+		        <p class ="title">{{product.title}}</p>
+		        <p>{{product.shortDesc}}</p>
+		        <p>Ends in {{product.duration}} days</p>
+			</div>
+=======
+<section class="frame">
+	<section ui-sref='detail({id: product._id})'> 
+		<img class="img-responsive img-rounded" ng-src="{{product.imgUrl[0]}}"/>
+        <p class ="title">{{product.title}}</p>
+        <p>{{product.shortDesc}}</p>
+        <p>Ends in {{product.duration}} days</p>
+>>>>>>> d1dfee51e50b376f854827792acfaef200e65d94
+	</section>
+
+	<section class='quick-bid description'>
+	    <form ng-submit>
+	    	Bid Price: <input type='number' min='0' step='1'placeholder='$'>
+	    	<button ui-sref='login' class='btn btn-primary'>Bid</button>
+	    </form>
+	</section>
+
+</section>
