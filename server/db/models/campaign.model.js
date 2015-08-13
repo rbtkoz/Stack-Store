@@ -11,7 +11,7 @@ var campaignSchema = new mongoose.Schema({
 	imgUrl:[String],
 	shortDesc: { type: String, set: shortenDesc },
 	longDesc:String,
-	duration: Number
+	duration: Number,
 	price: Number,
 	desired_price: Number,
 	bids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'bidSchema' }],

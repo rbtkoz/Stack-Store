@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var User = require('./user')
-var Campaign = require('./campaign')
+var Campaign = require('./campaign.model.js')
 
 var bidSchema = new mongoose.Schema({
     user_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
