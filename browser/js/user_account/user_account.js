@@ -6,10 +6,10 @@ app.config(function ($stateProvider){
         templateUrl: 'js/user_account/user_account.html',
         resolve: {
           UserBids: function (Session, $http){
-	          //console.log(Session);
-              return $http.get('/api/bids/user/' + Session.user._id).then(function(bids){
-                return bids;
-              })
+              console.log(Session.user)
+              return $http.get('/api/bids/user/' + Session.user._id).then( function (bids){
+                    return bids.data;
+                });
 	        }
         }
 
@@ -17,7 +17,6 @@ app.config(function ($stateProvider){
 });
 
 app.controller('userCtrl', function($scope, Session, UserBids){
-    $scope.test = "yo"
     $scope.user = Session.user;
-    $scope.bids = UserBids.bids;
+    $scope.bids = UserBids;
 })
