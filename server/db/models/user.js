@@ -1,7 +1,7 @@
 'use strict';
 var crypto = require('crypto');
 var mongoose = require('mongoose');
-var campaignSchema = require('./campaign')
+var campaignSchema = require('./campaign.model.js')
 var bidSchema = require('./bid')
 
 var schema = new mongoose.Schema({
