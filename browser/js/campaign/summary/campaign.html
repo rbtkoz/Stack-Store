@@ -8,10 +8,10 @@
 			</div>
 	</section>
 
-	<section class='quick-bid description'>
-	    <form ng-submit>
-	    	Bid Price: <input type='number' min='0' step='1'placeholder='$'>
-	    	<button ui-sref='login' class='btn btn-primary'>Bid</button>
+	<section class='quick-bid description' ng-controller="bidsCtrl">
+	    <form ng-submit="submitBid(bid, product._id)">
+	    	Bid Price: <input ng-model="bid.value" type='number' min='0' step='1'placeholder='$'>
+	    	<input type="submit" class='btn btn-primary' value="Bid">
 	    </form>
 	</section>
 
