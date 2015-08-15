@@ -15,3 +15,18 @@ router.get('/:id',function(req,res, next){
 		res.json(campaign);
 	})
 })
+
+
+router.post('/new', function(req, res, next){
+
+    CampaignModel.create(req.body, function(err, campaign){
+        if (err) return handleError(err);
+
+        res.json("saved")
+    })
+
+
+
+
+
+})
