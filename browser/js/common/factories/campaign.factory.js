@@ -1,4 +1,6 @@
 app.factory('CampaignFactory',function($http){
+
+
 	function getAllCampaigns(id){
 		//console.log('factory',id);
 		if(id){
@@ -13,7 +15,21 @@ app.factory('CampaignFactory',function($http){
 		})
 	};
 
+
+    function createCampaign(campaign){
+
+        console.log(campaign, "front end request received");
+        return $http.post('/api/campaigns/new', campaign).then(function(response){
+            console.log(response, "success from backend");
+            return response.data;
+
+        })
+    };
+
+
+
 	return {
-		getAllCampaigns : getAllCampaigns
+		getAllCampaigns : getAllCampaigns,
+        createCampaign : createCampaign
 	}
 })
