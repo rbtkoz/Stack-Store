@@ -101,6 +101,10 @@
             });
         };
 
+        this.notLoggedIn = function() {
+            console.log('Not logged in')
+        }
+
     });
 
     app.service('Session', function ($rootScope, AUTH_EVENTS) {

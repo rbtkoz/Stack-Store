@@ -28,9 +28,7 @@ var schema = new mongoose.Schema({
         id: String
     },
     campaigns: [campaignSchema],
-    bids: [{
-        bid_id: {type: mongoose.Schema.Types.ObjectId, ref: 'bidSchema'}
-    }]
+    bids: [{type: mongoose.Schema.Types.ObjectId, ref: 'bidSchema'}]
 });
 
 
