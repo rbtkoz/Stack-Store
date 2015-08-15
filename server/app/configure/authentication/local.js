@@ -53,5 +53,25 @@ module.exports = function (app) {
         passport.authenticate('local', authCb)(req, res, next);
 
     });
+    
+    app.post('/checkemail', function(req, res, next){
+        User.findOne({email: req.body.email},function(err,user){
+            if (err) return next(err);
+            console.log(user)
+            if (user) 
+                res.send({exists : true});
+            else
+                res.send({exists : false});
+        });
+    }); 
+    
+    app.post('/signup', function(req, res, next){
+        console.log(req.body)
+        User.create(req.body, function(err, user){
+            console.log(user)
+            if (err) return next(err);
+            res.json(user)
+        })
+    })
 
 };
