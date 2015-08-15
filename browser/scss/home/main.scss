@@ -1,5 +1,5 @@
 #home {
-  fullstack-logo {
+  logo {
     padding-top: 30px;
     width: 150px;
     margin: 0 auto;
@@ -7,6 +7,18 @@
   h1 {
     margin-top: 40px;
     text-align: center;
+  }
+
+    h1.site-name{
+    font-family: 'Damion', cursive;
+    font-size: 100px;
+    word-spacing: 70px;
+    margin:0;
+    padding:40px;
+    background-image: url("http://www.beaconfinancialstrategies.com/cms/wp-content/uploads/2012/04/Emergency-Fund-Target.jpg");
+    background-size: 180px 180px;
+    background-repeat: no-repeat;
+    background-position: 54% 50%;
   }
 }
 
