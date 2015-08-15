@@ -64,5 +64,14 @@ module.exports = function (app) {
                 res.send({exists : false});
         });
     }); 
+    
+    app.post('/signup', function(req, res, next){
+        console.log(req.body)
+        User.create(req.body, function(err, user){
+            console.log(user)
+            if (err) return next(err);
+            res.json(user)
+        })
+    })
 
 };

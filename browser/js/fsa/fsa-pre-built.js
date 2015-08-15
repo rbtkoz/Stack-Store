@@ -100,6 +100,13 @@
                 $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
             });
         };
+        
+        this.signup = function (signupInfo) {
+            return $http.post('/signup', signupInfo).then(function (data){
+                Session.create(data.id, data.user);
+                $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+            })
+        }
 
         this.notLoggedIn = function() {
             console.log('Not logged in')
