@@ -22,8 +22,8 @@ module.exports = function (app) {
     app.use(session({
         secret: app.getValue('env').SESSION_SECRET,
         store: new MongoStore({mongooseConnection: mongoose.connection}),
-        resave: false,
-        saveUninitialized: false
+        resave: true,
+        saveUninitialized: true
     }));
 
     // Initialize passport and also allow it to read
