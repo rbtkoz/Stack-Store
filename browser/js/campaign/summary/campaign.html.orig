@@ -1,4 +1,11 @@
 <<<<<<< HEAD
+<section class="frame">
+	<section ui-sref='detail({id: product._id})'> 
+		<img class="img-responsive img-rounded" ng-src="{{product.imgUrl[0]}}"/>
+        <p class ="title">{{product.title}}</p>
+        <p>{{product.shortDesc}}</p>
+        <p>Auction ends in {{product.duration}} days</p>
+=======
 <section>
 	<section ui-sref='detail({id: product._id})'>
 		<img ng-src="{{product.imgUrl[0]}}"/>
@@ -7,20 +14,13 @@
 		        <p>{{product.shortDesc}}</p>
 		        <p>Ends in {{product.duration}} days</p>
 			</div>
-=======
-<section class="frame">
-	<section ui-sref='detail({id: product._id})'> 
-		<img class="img-responsive img-rounded" ng-src="{{product.imgUrl[0]}}"/>
-        <p class ="title">{{product.title}}</p>
-        <p>{{product.shortDesc}}</p>
-        <p>Ends in {{product.duration}} days</p>
->>>>>>> d1dfee51e50b376f854827792acfaef200e65d94
+>>>>>>> b08562eb98d9ae1f39e4984e0254247dd42f3b2a
 	</section>
 
-	<section class='quick-bid description'>
-	    <form ng-submit>
-	    	Bid Price: <input type='number' min='0' step='1'placeholder='$'>
-	    	<button ui-sref='login' class='btn btn-primary'>Bid</button>
+	<section class='quick-bid description' ng-controller="bidsCtrl">
+	    <form ng-submit="submitBid(bid, product._id)">
+	    	Bid Price: <input ng-model="bid.value" type='number' min='0' step='1'placeholder='$'>
+	    	<input type="submit" class='btn btn-primary' value="Bid">
 	    </form>
 	</section>
 

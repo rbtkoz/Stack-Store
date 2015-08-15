@@ -10,6 +10,7 @@
 			</span>
 		</div>
 	</div>
+<<<<<<< HEAD
 	
 	<div class='detail'>	
 		<p>Product ends in {{products.duration}} days</p>
@@ -32,3 +33,18 @@
 	 -->
 	 </div>
  </section>
+=======
+
+	<form ng-controller="bidsCtrl" ng-submit="submitBid(bid, products._id)">
+    	Bid Price: <input type='number' ng-model="bid.value" min='0' step='1'placeholder='$'>
+    	<input type="submit" class='btn btn-primary' value="Bid">
+    </form>
+	<article>
+		{{products.longDesc}}
+	</article>
+<!-- 	<section>
+		{{product.question & answers}}
+	<section>
+ -->
+ </section>
+>>>>>>> b08562eb98d9ae1f39e4984e0254247dd42f3b2a
