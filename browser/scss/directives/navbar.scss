@@ -45,6 +45,7 @@ navbar {
     outline: none !important;
   }
 
+
   .welcome {
     float: right;
     margin-top: 12px;
@@ -52,8 +53,16 @@ navbar {
       color: white;
     }
     a {
-      color: #f30046;
       cursor: pointer;
+    }
+
+    .logout{
+      color: tomato;
+    }
+    .myaccount{
+      color:#000066;
+      padding-right:5px;
+
     }
   }
 

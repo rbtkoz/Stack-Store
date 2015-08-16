@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var UserModel = mongoose.model('User');
 
 module.exports = function (app) {
-
+    console.log('hit')
     var googleConfig = app.getValue('env').GOOGLE;
 
     var googleCredentials = {
@@ -51,7 +51,7 @@ module.exports = function (app) {
     app.get('/auth/google/callback',
         passport.authenticate('google', { failureRedirect: '/login' }),
         function (req, res) {
-            res.redirect('/');
+            res.redirect('/user_account');
         });
 
 };
