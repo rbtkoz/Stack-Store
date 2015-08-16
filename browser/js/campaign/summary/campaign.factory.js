@@ -24,8 +24,8 @@ app.factory('CampaignFactory',function($http, $interval){
 		minutes,
 		seconds;
 		if(timer<=0){
-			document.querySelector('#countdown').textContent= "Deal expired.";
-			return;
+			//document.querySelector('#countdown').textContent= "Deal expired.";
+			return "Deal expired.";
 		}
 		//$interval(function() {
 	    	days=parseInt(timer/3600/24,10);
@@ -38,7 +38,8 @@ app.factory('CampaignFactory',function($http, $interval){
 	        m = minutes+" minute" + (minutes >1  ? 's ' : ' '),
 	        s = seconds+" second" + (seconds >1  ? 's': '');
 	        
-	        document.querySelector('#countdown').textContent= "Deal ends in "+ dd+hh+m+s;
+	        //document.querySelector('#countdown').textContent= "Deal ends in "+ dd+hh+m+s;
+	        return  "Deal ends in "+ dd+hh+m+s;
 	    //}, 1000);
 	};
 

@@ -15,8 +15,10 @@ app.controller('CampaignCtrl',function($scope, CampaignFactory, $interval, $stat
         /*if(exp<=new Date()){
 
         }*/
+        $scope.countdown = 'Loading...';
+
 	    timer=$interval(function(){
-            CampaignFactory.startTimer(exp)},1000);
+            $scope.countdown = CampaignFactory.startTimer(exp)},1000);
     });
 
     $scope.$on('$destroy', function() {
