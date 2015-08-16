@@ -10,7 +10,13 @@ app.controller('CampaignCtrl',function($scope, CampaignFactory, $interval, $stat
 	    	$scope.primaryPic=data.imgUrl[i];
 	    }
         $scope.startTimer=CampaignFactory.startTimer;
-	    timer=$interval(CampaignFactory.startTimer(data.expDate),1000);
+        var exp=new Date(data.expDate[0],data.expDate[1]-1,data.expDate[2]+1);
+
+        /*if(exp<=new Date()){
+
+        }*/
+	    timer=$interval(function(){
+            CampaignFactory.startTimer(exp)},1000);
     });
 
     $scope.$on('$destroy', function() {

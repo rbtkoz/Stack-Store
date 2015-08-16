@@ -13,19 +13,19 @@ app.factory('CampaignFactory',function($http, $interval){
 		})
 	};
 
-	function startTimer(expDate) {
+	function startTimer(exp) {
 		//expect expDate = [year,month,day];
 		var current = new Date();
 		//month is 0-11, day+1 to indicate stop at midnight;
-		var exp = new Date(expDate[0],expDate[1]-1,expDate[2]+1);
-		console.log('exp',expDate);
+		//var exp = new Date(expDate[0],expDate[1]-1,expDate[2]+1);
 		var timer = parseInt((exp.getTime()-current.getTime())/1000,10),
 		days,
 		hours,
 		minutes,
 		seconds;
 		if(timer<=0){
-			document.querySelector('#countdown').textContent= "Deal expired."
+			document.querySelector('#countdown').textContent= "Deal expired.";
+			return;
 		}
 		//$interval(function() {
 	    	days=parseInt(timer/3600/24,10);
