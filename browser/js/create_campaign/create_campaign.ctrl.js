@@ -9,4 +9,5 @@ app.controller('CreateCampaignCtrl', function($scope , $state, CampaignFactory,S
         $state.go('home');
     };
 
+    $scope.user = Session.user;
 });
