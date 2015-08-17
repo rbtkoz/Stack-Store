@@ -22,8 +22,8 @@ module.exports = function (app) {
     app.use(session({
         secret: app.getValue('env').SESSION_SECRET,
         store: new MongoStore({mongooseConnection: mongoose.connection}),
-        resave: true,
-        saveUninitialized: true
+        resave: false,
+        saveUninitialized: false
     }));
 
     // Initialize passport and also allow it to read
@@ -46,6 +46,7 @@ module.exports = function (app) {
     // This is used by the browser application (Angular) to determine if a user is
     // logged in already.
     app.get('/session', function (req, res) {
+        //console.log(req)
         if (req.user) {
             res.send({ user: _.omit(req.user.toJSON(), ['salt', 'password']) });
         } else {
