@@ -102,15 +102,20 @@
         };
         
         this.signup = function (signupInfo) {
-            return $http.post('/signup', signupInfo).then(function (data){
-                Session.create(data.id, data.user);
-                $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-                return data;
-            })
+            return $http.post('/signup', signupInfo)
+                .then(function(response){
+                    var data = response.data;
+                    Session.create(data._id, data);
+                    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
+                    return data.user;
+                })
+                .catch(function () {
+                    return $q.reject({ message: 'Invalid signup.' });
+                });
         }
 
         this.notLoggedIn = function() {
-            console.log('Not logged in')
+            console.log('Not logged in')          
         }
 
     });
@@ -120,26 +125,28 @@
         var self = this;
 
         $rootScope.$on(AUTH_EVENTS.notAuthenticated, function () {
+            console.log('not auth');
             self.destroy();
         });
 
         $rootScope.$on(AUTH_EVENTS.sessionTimeout, function () {
+            console.log('timed out');
             self.destroy();
         });
-
+        
         this.id = null;
         this.user = null;
 
         this.create = function (sessionId, user) {
             this.id = sessionId;
             this.user = user;
+            console.log('each Session', this)
         };
 
         this.destroy = function () {
             this.id = null;
             this.user = null;
         };
-
     });
 
 })();

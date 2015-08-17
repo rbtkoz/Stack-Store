@@ -57,7 +57,7 @@ module.exports = function (app) {
     app.post('/checkemail', function(req, res, next){
         User.findOne({email: req.body.email},function(err,user){
             if (err) return next(err);
-            console.log(user)
+            //console.log(user)
             if (user) 
                 res.send({exists : true});
             else
@@ -66,11 +66,10 @@ module.exports = function (app) {
     }); 
     
     app.post('/signup', function(req, res, next){
-        console.log(req.body)
+        console.log('req.user',req.user);
         User.create(req.body, function(err, user){
-            console.log(user)
             if (err) return next(err);
-            res.json(user)
+            res.json(_.omit(user.toJSON(), ['password', 'salt']))
         })
     })
 
