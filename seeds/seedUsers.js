@@ -45,26 +45,29 @@ var seedCampaign = function () {
 
     var campaign = [
         {
-        title:'cute puppy',
+        title:'Corgi Boy',
         shortDesc: "well trained and cute",
         duration: "5",
         imgUrl: ["https://pbs.twimg.com/profile_images/378800000674268962/06ce58cab26c3a0daf80cf57e5acb29b_400x400.jpeg","http://cdn.sheknows.com/articles/2013/04/corgi_funny__5.jpg"],
-        longDesc:"Almost all dogs bark.  Corgis bark a lot.  If you have never lived with dogs that bark a lot, you may want to spend some time in the home of someone with a barking breed to see if you can live with it. It’s true that many Corgis make excellent watchdogs.  As herding and farm dogs, one of their historic jobs was to notice anything “different” and alert the owners.  This means your Corgi is likely to bark if someone walks up your sidewalk or if a stray cat starts digging up your flowerbeds. Your Corgi may also alert you if your neighbor left a gate open, if a car is parked on the opposite side of the street from its usual spot, or if the wind is rattling your gutter.   He may bark to warn you that someone is entering your neighbor’s house--- and oh yes, it IS your neighbor.  He might be best friends with the Labrador up the street, but that won’t stop him from barking to warn you that the Labrador is walking past your house. "
+        longDesc:"Almost all dogs bark.  Corgis bark a lot.  If you have never lived with dogs that bark a lot, you may want to spend some time in the home of someone with a barking breed to see if you can live with it. It’s true that many Corgis make excellent watchdogs.  As herding and farm dogs, one of their historic jobs was to notice anything “different” and alert the owners.  This means your Corgi is likely to bark if someone walks up your sidewalk or if a stray cat starts digging up your flowerbeds. Your Corgi may also alert you if your neighbor left a gate open, if a car is parked on the opposite side of the street from its usual spot, or if the wind is rattling your gutter.   He may bark to warn you that someone is entering your neighbor’s house--- and oh yes, it IS your neighbor.  He might be best friends with the Labrador up the street, but that won’t stop him from barking to warn you that the Labrador is walking past your house. ",
+        expDate: [2015,8,31]
     },
 
         {
         title:'Gateleg table',
-        shortDesc: "well trained and cute",
+        shortDesc: "hand crafted",
         duration: "3",
         imgUrl: ["http://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Gateleg-table.jpg/600px-Gateleg-table.jpg"],
-        longDesc:"A gateleg table is a type of furniture first introduced in England in the 16th century. The table top has a fixed section and one or two hinged leaves, which, when not in use, fold down below the fixed section to hang vertically. As such, gateleg tables are a subset of the type known as a dropleaf. The hinged section, or flap, was supported on pivoted legs joined at the top and bottom by stretchers constituting a gate. Large flaps had two supports, which had the advantage of providing freer leg space in the centre. The earliest gateleg tables of the 16th and 17th century were typically made of oak."    },
-
+        longDesc:"A gateleg table is a type of furniture first introduced in England in the 16th century. The table top has a fixed section and one or two hinged leaves, which, when not in use, fold down below the fixed section to hang vertically. As such, gateleg tables are a subset of the type known as a dropleaf. The hinged section, or flap, was supported on pivoted legs joined at the top and bottom by stretchers constituting a gate. Large flaps had two supports, which had the advantage of providing freer leg space in the centre. The earliest gateleg tables of the 16th and 17th century were typically made of oak." ,
+        expDate: [2015,11,5]
+    },
         {
-        title:'cute puppy',
+        title:'Cute Puppy for Sale',
         shortDesc: "well trained and cute",
         duration: "1",
         imgUrl: ["https://pbs.twimg.com/profile_images/378800000674268962/06ce58cab26c3a0daf80cf57e5acb29b_400x400.jpeg","http://cdnpix.com/show/imgs/f039ba4e4f2829cd3b3c8a7cc3f5cdf8.jpg","https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/s320x320/e15/11356487_1013157495391733_785257482_n.jpg"],
-        longDesc:"many Corgis are “talkers” who use a wide range of vocalizations to express any number of opinions or to get your attention.  Corgi vocalizations may include low woofs, whines, grumbles, short howls, and a series of whining grunts that many Corgi owners refer to affectionately as “Wookie” or “Chewbacca” noises."
+        longDesc:"many Corgis are “talkers” who use a wide range of vocalizations to express any number of opinions or to get your attention.  Corgi vocalizations may include low woofs, whines, grumbles, short howls, and a series of whining grunts that many Corgi owners refer to affectionately as “Wookie” or “Chewbacca” noises.",
+        expDate: [2014,5,12]
     }
     ];
     console.log('seed')
@@ -75,8 +78,8 @@ var seedCampaign = function () {
 
 connectToDb.then(function () {
 
-    //return seedCampaign();
-   User.findAsync({}).then(function (users) {
+    return seedCampaign();
+   /*User.findAsync({}).then(function (users) {
 
         if (users.length === 0) {
             return seedUsers();
@@ -90,5 +93,5 @@ connectToDb.then(function () {
     }).catch(function (err) {
         console.error(err);
         process.kill(1);
-    });
+    });*/
 });
