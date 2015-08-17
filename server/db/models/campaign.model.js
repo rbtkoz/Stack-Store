@@ -14,6 +14,7 @@ var campaignSchema = new mongoose.Schema({
 	duration: Number,
 	price: Number,
 	desired_price: Number,
+	expDate: [Number],
 	bids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'bidSchema' }],
 	owner_id: { type: mongoose.Schema.Types.ObjectId, ref: 'userSchema' }
 });
