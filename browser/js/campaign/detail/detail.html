@@ -1,28 +1,29 @@
 <section id='detail'>
 	<h1 class="title">{{products.title}}</h1>
-	<div class="row">
-		<div class="img-group col-lg-6 col-md-6 col-sm-12">
+	<div class='img-group'>
+		<div >
 			<img ng-src='{{primaryPic}}' class='primaryPic'>	
 		</div>
 
-		<div class='detail col-lg-6 col-md-6 col-sm-12'>	
-			<!-- <p id='countdown'></p> -->
-			<p>{{countdown}}</p>
-<!-- 			<p>Product Location: {{products.location}}</p>
-			<p>Shipping Cost: {{products.shipCost}}</p>
-			<p>Estimate Arrival Days: {{products.shipLength}}</p> -->
-			<form ng-submit>
-		    	Bid Price: <input type='number' min='0' step='1'placeholder='$'>
-		    	<button ui-sref='login' class='btn btn-primary'>Bid</button>
-		    </form>
-		</div>
+		<span ng-repeat ='thumbnail in products.imgUrl'>
+			<img ng-src="{{thumbnail}}" ng-click="changePic($index)">
+		</span>
 	</div>
 
-	<div class='row'>
-			<span ng-repeat ='thumbnail in products.imgUrl'>
-				<img width='50' height='50' ng-src="{{thumbnail}}" ng-click="changePic($index)">
-			</span>
+	<div class='desc'>	
+		<!-- <p id='countdown'></p> -->
+		<p id='countdown'>{{countdown}}</p>
+		<p>Total Bids: {{products.bids.length}}</p>
+	<!-- 	<p>Shipping Cost: {{products.shipCost}}</p>
+		<p>Estimate Arrival Days: {{products.shipLength}}</p>
+	 -->	<form ng-submit>
+	    	Bid Price: <input type='number' min='0' step='1'placeholder='$'>
+	    	<button ui-sref='login' class='btn btn-primary'>Bid</button>
+	    </form>
 	</div>
+
+
+		
 
 	<div class="product-description row"> 
 		<article>
@@ -34,3 +35,59 @@
 	 -->
 	 </div>
  </section>
+
+
+<!--  /*div#main{
+
+  .row{
+    padding:20px;
+    width: 100vw;
+  }
+  .img-group {
+    border-style:solid;
+    border-color: gray;
+    padding-right: 20px;
+    img{
+      padding: 0;
+    }
+  }
+
+@media (min-width: 481px){
+  .row{
+    display: table;
+  }
+  .img-group{
+    overflow-y:hidden;
+  }
+  .primaryPic{
+    max-width: 100%;
+    max-height: 100%;
+  }
+  div.detail{
+    height:100%;
+    font-size:20px;
+  }
+  article{
+    font-size:px;
+  }
+}
+
+@media (max-width: 480px){
+  .primaryPic{
+    height:100%;
+    overflow: 
+  }
+  div.detail{
+    font-size:10px;
+  }
+
+  article{
+    font-size:10px;
+  }
+}
+
+ 
+
+  
+  
+}*/ -->

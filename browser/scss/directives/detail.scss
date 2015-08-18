@@ -1,14 +1,13 @@
-/*$tablet: 768px;
-$desktop: 1024px;*/
-  
-.title{
+$tablet-width: 768px;
+$desktop-width: 1024px;
+#detail{
+  margin-left:5%;
+  margin-right: 5%;
+  .title{
     text-align: center;
-  }
-
-  /*@mixin mobile {
-    @media (max-width: #{$tablet-width}){
-      
-    }
+    padding-bottom: 10px;
+    font-size: 40px;
+    font-family: 'Roboto';
   }
 
   @mixin tablet {
@@ -24,98 +23,73 @@ $desktop: 1024px;*/
   }
 
   p {
-    font-size: 16px;
-    background-color: red;
 
     @include tablet {
-      font-size: 18px;
-      background-color: gray;
     }
 
     @include desktop {
-      font-size: 20px;
-    }
-  }*/
 
-
-
-
-
-
-/*div#main{
-  margin: 0px 50px;
-  padding:0;
-  width:100%;
-  h1{
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 40px;
-    background-color: ligten(blue, 90%);
-  }
-
-  .row{
-    padding:20px;
-    width: 100vw;
-  }
-  .img-group {
-    border-style:solid;
-    border-color: gray;
-    padding-right: 20px;
-    img{
-      padding: 0;
     }
   }
 
-@media (min-width: 481px){
-  .row{
-    display: table;
-  }
   .img-group{
-    overflow-y:hidden;
-  }
-  .primaryPic{
-    max-width: 100%;
-    max-height: 100%;
-  }
-  div.detail{
-    height:100%;
-    font-size:20px;
-  }
-  article{
-    font-size:px;
-  }
-}
 
-@media (max-width: 480px){
-  .primaryPic{
-    height:100%;
-    overflow: 
-  }
-  div.detail{
-    font-size:10px;
+    .primaryPic{
+      width:100%;
+      margin:0 auto;
+      display:block;
+      @include tablet {
+        width: 50%;
+        float:left;
+      }
+     @include desktop {
+        width: 50%;
+        float:left;
+      }
+
+    }
+
+    span>img{
+      width: 100px;
+      height: 100px;
+    }
   }
 
-  article{
-    font-size:10px;
-  }
-}
-  
-
-  div.detail{
+  .desc{
+    margin-top: 20px;
+    padding: 20px 0;
     background-color: #C0C0C0;  
-    float:left;
+    width:100%;
     font-family: 'Roboto', Verdana;
     height:100%;
-    font-weight: 5px;
-  }
- 
+    text-align: center;
+    font-weight: 10px;
+    font-size: 30px;
+    line-height: 110%;
 
-  div.product-description{
-    float:left;
-    width:100%;
-    article{
-      font-family: 'Roboto';
+    @include tablet {
+        width: 50%;
+        font-size: 18px;
+        float:left;
+      }
+     @include desktop {
+        width: 50%;
+        font-size: 16px;
+        float:left;
+      }
+
+    #countdown{
+
+
     }
   }
-  
-}*/
+
+  div.product-description{
+    display: block;
+    margin-top: 20px;
+    width:100%;
+    text-align: justify;
+    text-indent: 10px;
+  }
+}  
+
