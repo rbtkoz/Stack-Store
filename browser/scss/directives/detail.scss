@@ -1,7 +1,14 @@
 $tablet-width: 992px;
+$mobile-max:991px;
 
   @mixin lgscreen {
     @media (min-width: #{$tablet-width}) {
+      @content;
+    }
+  }
+
+  @mixin smscreen {
+    @media (max-width: #{$mobile-max}) {
       @content;
     }
   }
