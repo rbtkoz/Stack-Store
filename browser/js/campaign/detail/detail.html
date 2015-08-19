@@ -1,31 +1,32 @@
 <section id='detail'>
 	<h1 class="title">{{products.title}}</h1>
-	<div class='img-group'>
-		<div >
-			<img ng-src='{{primaryPic}}' class='primaryPic'>	
+	<div class='table'>
+		<div class='img-group'>
+			<div >
+				<img ng-src='{{primaryPic}}' class='primaryPic'>	
+			</div>
+
+			<span ng-repeat ='thumbnail in products.imgUrl'>
+				<img ng-src="{{thumbnail}}" ng-click="changePic($index)">
+			</span>
 		</div>
 
-		<span ng-repeat ='thumbnail in products.imgUrl'>
-			<img ng-src="{{thumbnail}}" ng-click="changePic($index)">
-		</span>
-	</div>
-
-	<div class='desc'>	
-		<!-- <p id='countdown'></p> -->
-		<p id='countdown'>{{countdown}}</p>
-		<p>Total Bids: {{products.bids.length}}</p>
-	<!-- 	<p>Shipping Cost: {{products.shipCost}}</p>
-		<p>Estimate Arrival Days: {{products.shipLength}}</p>
-	 -->	<form ng-submit>
-	    	Bid Price: <input type='number' min='0' step='1'placeholder='$'>
-	    	<button ui-sref='login' class='btn btn-primary'>Bid</button>
-	    </form>
-	</div>
-
+		<div class='desc'>	
+			<!-- <p id='countdown'></p> -->
+			<p id='countdown'>{{countdown}}</p>
+			<p>Total Bids: {{products.bids.length}}</p>
+		<!-- 	<p>Shipping Cost: {{products.shipCost}}</p>
+			<p>Estimate Arrival Days: {{products.shipLength}}</p>
+		 -->	<form ng-submit>
+		    	Bid Price: <input type='number' min='0' step='1'placeholder='$'>
+		    	<button ui-sref='login' class='btn btn-primary'>Bid</button>
+		    </form>
+		</div>
+	</div>	
 
 		
 
-	<div class="product-description row"> 
+	<div class="product-description"> 
 		<article>
 			{{products.longDesc}}
 		</article>

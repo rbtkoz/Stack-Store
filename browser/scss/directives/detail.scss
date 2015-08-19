@@ -1,8 +1,17 @@
-$tablet-width: 768px;
-$desktop-width: 1024px;
+$tablet-width: 992px;
+
+  @mixin lgscreen {
+    @media (min-width: #{$tablet-width}) {
+      @content;
+    }
+  }
 #detail{
   margin-left:5%;
   margin-right: 5%;
+  @include lgscreen{
+    margin-left: 10%;
+    margin-right:10%;
+  }
   .title{
     text-align: center;
     padding-bottom: 10px;
@@ -10,49 +19,39 @@ $desktop-width: 1024px;
     font-family: 'Roboto';
   }
 
-  @mixin tablet {
-    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
-      @content;
-    }
-  }
-
-  @mixin desktop {
-    @media (min-width: #{$desktop-width}) {
-      @content;
-    }
-  }
-
-  p {
-
-    @include tablet {
-    }
-
-    @include desktop {
-
+  .table{
+    @include lgscreen {
+      display:table-row-group;
+      border-collapse: collapse;
     }
   }
 
   .img-group{
+    @include lgscreen{
+      width: 50vw;
+      display:table-cell;
+      padding-right:2vw;
+    }
 
     .primaryPic{
       width:100%;
       margin:0 auto;
-      display:block;
-      @include tablet {
-        width: 50%;
-        float:left;
-      }
-     @include desktop {
-        width: 50%;
-        float:left;
+      @include lgscreen {
+        height:400px;
+        max-width: 100%;
       }
 
     }
 
     span>img{
-      width: 100px;
-      height: 100px;
-    }
+        width: 100px;
+        height: 100px;
+
+        @include lgscreen {
+          width: 60px;
+          height: 60px; 
+        }
+      }
   }
 
   .desc{
@@ -67,15 +66,15 @@ $desktop-width: 1024px;
     font-size: 30px;
     line-height: 110%;
 
-    @include tablet {
-        width: 50%;
+    @include lgscreen {
+        background-color: #B2E6FF; 
+        line-height: 200%;
+        vertical-align: middle;
+        width: 40vw;
         font-size: 18px;
-        float:left;
-      }
-     @include desktop {
-        width: 50%;
-        font-size: 16px;
-        float:left;
+        padding: 0;
+        display: table-cell;
+        border-bottom: 60px solid white;
       }
 
     #countdown{
@@ -87,9 +86,14 @@ $desktop-width: 1024px;
   div.product-description{
     display: block;
     margin-top: 20px;
-    width:100%;
-    text-align: justify;
-    text-indent: 10px;
-  }
-}  
-
+    article{
+      width:100%;
+      text-align: justify;
+      text-indent: 50px;
+      @include lgscreen {
+        font-size: 18px;
+      }
+    }
+    
+  }  
+}
