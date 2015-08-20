@@ -2,6 +2,7 @@
 var router = require('express').Router();
 var mongoose = require('mongoose');
 var CampaignModel = mongoose.model('Campaign');
+var bids = mongoose.model('bid');
 module.exports = router;
 
 router.get('/',function(req,res, next){
@@ -11,7 +12,7 @@ router.get('/',function(req,res, next){
 })
 
 router.get('/:id',function(req,res, next){
-	CampaignModel.findById({_id:req.params.id}).then(function(campaign){
+	CampaignModel.findById({_id:req.params.id}).populate('bids').then(function(campaign){
 		res.json(campaign);
 	})
 })

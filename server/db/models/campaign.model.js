@@ -15,8 +15,8 @@ var campaignSchema = new mongoose.Schema({
 	price: Number,
 	desired_price: Number,
 	expDate: [Number],
-	bids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'bidSchema' }],
-	owner_id: { type: mongoose.Schema.Types.ObjectId, ref: 'userSchema' }
+	bids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'bid' }],
+	owner_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }//need to be model name, not schema name
 });
 
 module.exports = mongoose.model('Campaign', campaignSchema);
