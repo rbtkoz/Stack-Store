@@ -4,9 +4,14 @@ app.controller('CreateCampaignCtrl', function($scope , $state, CampaignFactory,S
     $scope.master ={};
 
     $scope.submit =function(campaign){
-        CampaignFactory.createCampaign(campaign);
+
+        campaign.owner_id = Session.user._id;
+        CampaignFactory.createCampaign(campaign).then(function(data){
+            $state.go('detail',{id: data._id});
+        });
         $scope.master = angular.copy(campaign);
-        $state.go('home');
+
+
     };
 
 });
