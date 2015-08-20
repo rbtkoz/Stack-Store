@@ -6,10 +6,12 @@ app.controller('CreateCampaignCtrl', function($scope , $state, CampaignFactory,S
     $scope.submit =function(campaign){
 
         campaign.owner_id = Session.user._id;
-        CampaignFactory.createCampaign(campaign);
+        CampaignFactory.createCampaign(campaign).then(function(data){
+            $state.go('detail',{id: data._id});
+        });
         $scope.master = angular.copy(campaign);
 
-        $state.go('detail',{id: CampaignFactory.currentCampaignId});
+
     };
 
 });

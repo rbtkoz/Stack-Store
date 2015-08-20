@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var UserModel = mongoose.model('User');
 
 module.exports = function (app) {
-    console.log('hit')
+    //console.log('hit')
     var googleConfig = app.getValue('env').GOOGLE;
 
     var googleCredentials = {

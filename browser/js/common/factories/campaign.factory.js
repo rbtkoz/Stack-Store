@@ -27,8 +27,7 @@ app.factory('CampaignFactory',function($http){
 
         //console.log(campaign, "front end request received");
         return $http.post('/api/campaigns/new', campaign).then(function(response){
-            console.log(response, "success from backend");
-            this.currentCampaignId = response.data._id;
+            console.log(response, "success from backend")
             return response.data;
 
         })
