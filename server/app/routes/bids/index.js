@@ -1,7 +1,9 @@
 var Router = require('express').Router();
-var User = require('../../../db/models/user.js');
-var Campaign = require('../../../db/models/campaign.model.js');
-var Bid = require('../../../db/models/bid.js');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+var Campaign = mongoose.model('Campaign');
+var Bid = mongoose.model('Bid');
+
 var async = require('async');
 var ObjectId = require('mongoose').Types.ObjectId;
 
