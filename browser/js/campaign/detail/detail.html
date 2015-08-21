@@ -2,12 +2,12 @@
 	<h1 class="title">{{products.title}}</h1>
 	<div class="row">
 		<div class="img-group col-lg-6 col-md-6 col-sm-12">
-			<img ng-src='{{primaryPic}}' class='primaryPic'>	
+			<img ng-src='{{primaryPic}}' class='primaryPic'>
 		</div>
 
-		<div class='detail col-lg-6 col-md-6 col-sm-12'>	
+		<div class='detail col-lg-6 col-md-6 col-sm-12'>
 			<!-- <p id='countdown'></p> -->
-			<p>{{countdown}}</p>
+			<p class ="countdown">{{countdown}}</p>
 <!-- 			<p>Product Location: {{products.location}}</p>
 			<p>Shipping Cost: {{products.shipCost}}</p>
 			<p>Estimate Arrival Days: {{products.shipLength}}</p> -->
@@ -18,13 +18,13 @@
 		</div>
 	</div>
 
-	<div class='row'>
+	<div class='gallery'>
 			<span ng-repeat ='thumbnail in products.imgUrl'>
-				<img width='50' height='50' ng-src="{{thumbnail}}" ng-click="changePic($index)">
+				<img width='100' height='100' ng-src="{{thumbnail}}" ng-click="changePic($index)">
 			</span>
 	</div>
 
-	<div class="product-description row"> 
+	<div class="product-description row">
 		<article>
 			{{products.longDesc}}
 		</article>

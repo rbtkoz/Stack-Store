@@ -21,7 +21,9 @@ body {
 }
 
 @import 'directives/_main';
-@import 'home/main';
+@import 'allcampaigns/main';
 @import 'about/main';
 @import 'tutorial/main';
 @import 'login/main';
+@import 'signup/main';
+@import 'social_bootstrap/bootstrap-social';

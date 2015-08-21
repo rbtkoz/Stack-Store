@@ -1,7 +1,7 @@
-#home > .campaign-list{
-    padding: 0;
-    margin: 0;
-    list-style: none;
+#allcampaigns > .campaign-list{
+  padding: 50px 50px 10px 50px;
+  margin: 0;
+  list-style: none;
 
 /*    display: -webkit-box;
     display: -moz-box;
@@ -23,12 +23,32 @@ campaign {
   text-align: center;
 
   section.frame{
-    background-color: #C0C0C0;
-    
+    //border: dodgerblue 5px solid;
+    //border-radius:5px;
+    max-width: 350px;
+
      .title {
-      font-size:1.4em;
-      font-weight: bold;
-      text-transform: uppercase;
+       font-weight: 100;
+       font-size:1.4em;
+       text-transform: uppercase;
+       position: relative;
+       background-color: dodgerblue;
+       bottom: 300px;
+       opacity: .9;
+       width:50%;
+       padding-left:20px;
+       border-radius:0 8px 8px 0;
+       text-align: left;
+
+       p{
+         margin: 0 0;
+         color:white;
+         padding:5px;
+
+
+
+       }
+
 
     }
 
@@ -36,16 +56,74 @@ campaign {
       margin-bottom: 0px;
       height: 320px;
       width: 350px;
+      min-width:350px;
+    }
+    .desc{
+
+
+
+      p{
+        position:relative;
+        bottom:33px;
+        float: left;
+        text-align: left;
+        padding: 0 0 0 2px;
+        font-size: 1.2em;
+        border-top: 1px gray solid;
+        border-bottom: 1px gray solid;
+
+      }
+
+      span{
+        display:block;
+        margin-right: 5px;
+        float: left;
+        background-color: #FF7F7F;
+        padding: 2px 8px 1px;
+        border-radius: 5px;
+        position: relative;
+        bottom: 33px;
+        font-size: 1.1em;
+        color: white;
+      }
+    }
+
+    .timeend{
+      float:right;
+      text-align: center;
+      position: relative;
+      bottom: 30px;
+      right: 5px;
+
+      p{
+        margin-top: 3px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        background-color: lightseagreen;
+        color: white;
+        padding-top:5px;
+        margin: 0;
+        font-size: 2em;
+
+      }
+
     }
 
 
-    p{
-      margin: 0 0 0px;
+    p {
+      margin: 0 0;
     }
   }
 
   form{
-    padding-bottom: 20px;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    height: 80%;
+    padding-top: -30px;
+    position: relative;
+    bottom: 20px;
 
   }
 

@@ -1,0 +1,26 @@
+
+.signup{
+  display:flex;
+  align-items:center;
+  align-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  #signup-form {
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 100px;
+
+  }
+
+  .socialbtns{
+
+    align-self: flex-end;
+    padding-top: 20px;
+    padding-right: 100px;
+  }
+  .btn-social{
+
+  }
+
+}
