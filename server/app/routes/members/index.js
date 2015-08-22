@@ -15,8 +15,10 @@ var ensureAuthenticated = function (req, res, next) {
 
 router.get('/:id', ensureAuthenticated, function (req, res) {
 
-    User.findById(req.params.id, function(err, user){
-        res.send(user);
-    })
+    User.findById(req.params.id)
+        .populate('campaigns')
+        .exec(function(err, user){
+            res.send(user);
+        });
 
 });

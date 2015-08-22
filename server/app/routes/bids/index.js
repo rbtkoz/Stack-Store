@@ -3,17 +3,19 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Campaign = mongoose.model('Campaign');
 var Bid = mongoose.model('Bid');
-
+var _ = require('lodash');
 var async = require('async');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 // Get all of user's bids
 Router.get("/user/:user_id", function(req, res, next){
 	//console.log(req.params.user_id)
-	Bid.find({ "user_id": req.params.user_id}, function(err, bids){
-		console.log(bids);
-		res.json(bids);
-	});
+	Bid.find({user_id: req.params.user_id})
+        .populate('campaign_id')
+        .exec(function(err, bids){
+            console.log(bids);
+            res.json(bids);
+	    });
 });
 
 //Get all bids from a campaign
@@ -65,15 +67,17 @@ Router.post("/", function(req, res, next){
                         if(err) {
                             done(err)
                         } else {
-                            done(null, user)
+                            done(null, _.omit(user,['salt','password']));
                         }
                     });
                 }
             }, function(err, response){
+                //console.log(response);
                 if(err) {
                     res.status(400)
                 } else {
-                    res.status(200).send(bid);
+                    response.bid = bid;
+                    res.status(200).send(response);
                 }
             });
         })

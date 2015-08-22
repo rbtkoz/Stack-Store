@@ -26,7 +26,7 @@ router.post('/new', function(req, res, next){
 
 	return Campaign.create(req.body).then(function(campaign){
 		//console.log(campaign);
-		return User.findByIdAndUpdate(campaign.owner_id, { $push :{ campaigns:  campaign.toObject() }},{'new':true}, function(err,user){
+		return User.findByIdAndUpdate(campaign.owner_id, { $push :{ campaigns:  ObjectId(campaign._id) }},{'new':true}, function(err,user){
 			if(err) console.log(err);
 			console.log(campaign);
             res.json(campaign);

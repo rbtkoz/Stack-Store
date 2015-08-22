@@ -100,8 +100,9 @@
                 $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
             });
         };
-        
+
         this.signup = function (signupInfo) {
+            console.log('sign up info', signupInfo);
             return $http.post('/signup', signupInfo)
                 .then(function(response){
                     var data = response.data;
@@ -115,7 +116,7 @@
         }
 
         this.notLoggedIn = function() {
-            console.log('Not logged in')          
+            console.log('Not logged in')
         }
 
     });
@@ -133,7 +134,7 @@
             console.log('timed out');
             self.destroy();
         });
-        
+
         this.id = null;
         this.user = null;
 
