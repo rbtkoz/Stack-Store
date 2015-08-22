@@ -1,10 +1,15 @@
-app.controller('CampaignCtrl',function($scope, AuthService,CampaignFactory, $interval, $stateParams){
+app.controller('CampaignCtrl',function($scope, $rootScope,AuthService,CampaignFactory,bidsFactory, $interval, $stateParams){
     var timer;
+
+    $rootScope.$on('updateBids', function(){
+        $scope.totalBids++;
+    });
     CampaignFactory.getAllCampaigns($stateParams.id).then(function (data) {
     	//console.log(data)
         $scope.products = data;
         $scope.login=AuthService.isAuthenticated();
 
+        $scope.totalBids=data.bids.length;
         //CampaignFactory.startTimer(data.expDate);
 
             $scope.primaryPic = data.imgUrl[0];
