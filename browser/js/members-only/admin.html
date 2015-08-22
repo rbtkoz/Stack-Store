@@ -1,0 +1,8 @@
+<h2>Welcome {{user.name}}</h2>
+
+<h3>Search Activity for User</h3>
+<textarea ng-model="searchQry"></textarea>
+<button ng-click="search()">Search</button>
+<ul ng-repeat="result in results">
+    <li>{{result.name}}<button ng-click="setAdmin(result._id)">Set Admin</button></li>
+</ul>
