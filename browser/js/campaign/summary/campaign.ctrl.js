@@ -6,7 +6,7 @@ app.controller('CampaignCtrl',function($scope, $rootScope,AuthService,CampaignFa
     });
     CampaignFactory.getAllCampaigns($stateParams.id).then(function (data) {
     	//console.log(data)
-        $scope.products = data;
+        $scope.products = data;s
         $scope.login=AuthService.isAuthenticated();
 
         $scope.totalBids=data.bids.length;
