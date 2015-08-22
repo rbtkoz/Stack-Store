@@ -3,6 +3,7 @@
     <h2>Welcome {{user.name | capitalize}}</h2>
     <button ui-sref="newcampaign" type="button" class="btn btn-default navbar-btn">New Campaign</button>
     <button ui-sref="home" type="button" class="btn btn-default navbar-btn">View Marketplace</button>
+    <button ng-if="user.isAdmin" ui-sref="admin" type="button" class="btn btn-default navbar-btn">Admin Page</button>
 </nav>
 
 <div col-md-6>

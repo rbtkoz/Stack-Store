@@ -32,6 +32,7 @@ var userSchema = new mongoose.Schema({
     google: {
         id: String
     },
+    isAdmin: Boolean,
     campaigns: [{type: mongoose.Schema.Types.ObjectId, ref: 'Campaign'}],
     reviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}],
     bids: [{type: mongoose.Schema.Types.ObjectId, ref: 'Bid'}]
