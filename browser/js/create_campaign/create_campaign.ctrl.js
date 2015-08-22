@@ -20,10 +20,10 @@ app.controller('CreateCampaignCtrl', function($scope, $state, Upload, CampaignFa
     });
     //submit new campaign
     $scope.submit =function(campaign){
-        console.log(Session.user);
+        console.log('this session',Session.user);
         campaign.owner_id = Session.user._id;
         CampaignFactory.createCampaign(campaign).then(function(response){
-            console.log(response);
+            //console.log(response);
             $state.go('detail',{id: response._id});
         });
         $scope.master = angular.copy(campaign);
