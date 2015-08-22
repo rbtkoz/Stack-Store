@@ -38,45 +38,50 @@ Router.get("/campaign/:campaign_id/:user_id", function(req, res, next){
 
 //Post route will require a complete bid object
 Router.post("/", function(req, res, next){
-	Bid.create(req.body, function(err, bid){
-		async.parallel({
-			campaign: function(done) {
-				Campaign.findByIdAndUpdate(ObjectId(req.body.campaign_id), {
-					$push: { bids: bid._id }
-				}, {
-					safe: true,
-					upsert: true
-				}, function(err, campaign){
-					if(err) {
-						done(err)
-					} else {
-						done(null, campaign)
-					}
-				});
-			},
-			user: function(done) {
-				User.findByIdAndUpdate(req.body.user_id, {
-					$push: { bids: bid._id }
-				}, {
-					safe: true,
-					upsert: true
-				}, function(err, bid){
-					if(err) {
-						done(err)
-					} else {
-						done(null, bid)
-					}
-				});
-			}
-		}, function(err, response){
-			if(err) {
-				console.log(err)
-			} else {
-				res.status(200).send(bid);
-			}
-		});
-	})
+    if (req.body.campaign_id && req.body.user_id){
+        Bid.create(req.body, function(err, bid){
+            async.parallel({
+                campaign: function(done) {
+                    Campaign.findByIdAndUpdate(ObjectId(req.body.campaign_id), {
+                        $push: { bids: bid._id }
+                    }, {
+                        safe: true,
+                        upsert: true
+                    }, function(err, campaign){
+                        if(err) {
+                            done(err)
+                        } else {
+                            done(null, campaign)
+                        }
+                    });
+                },
+                user: function(done) {
+                    User.findByIdAndUpdate(req.body.user_id, {
+                        $push: { bids: bid._id }
+                    }, {
+                        safe: true,
+                        upsert: true
+                    }, function(err, user){
+                        if(err) {
+                            done(err)
+                        } else {
+                            done(null, user)
+                        }
+                    });
+                }
+            }, function(err, response){
+                if(err) {
+                    res.status(400)
+                } else {
+                    res.status(200).send(bid);
+                }
+            });
+        })
+    }else{
+        res.status(400).send(null);
+    }
+
 })
 
 
-module.exports = Router
+module.exports = Router;
