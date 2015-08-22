@@ -21,9 +21,12 @@ app.controller('CreateCampaignCtrl', function($scope, $state, Upload, CampaignFa
 
     //submit new campaign
     $scope.submit =function(campaign){
-        CampaignFactory.createCampaign(campaign);
+        CampaignFactory.createCampaign(campaign).then(function(response){
+            console.log(response);
+            $state.go('detail',{id: response._id});
+        });
         $scope.master = angular.copy(campaign);
-        $state.go('allcampaigns');
+
     };
 
 

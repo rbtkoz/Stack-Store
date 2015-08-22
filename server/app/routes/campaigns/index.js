@@ -1,8 +1,10 @@
 'use strict';
 var router = require('express').Router();
 var mongoose = require('mongoose');
-var CampaignModel = mongoose.model('Campaign');
 var bids = mongoose.model('Bid');
+var Campaign = mongoose.model('Campaign');
+var ObjectId = mongoose.Schema.Types.ObjectId;
+var User = mongoose.model('User');
 var fs = require('fs');
 var AWS = require('aws-sdk');
 AWS.config.region = 'us-west-2';
@@ -17,13 +19,13 @@ AWS.config.update({ accessKeyId: 'AKIAJXEZ2RS744RPV6JQ', secretAccessKey: 'sDdBW
 
 
 router.get('/',function(req,res, next){
-	CampaignModel.find({}).then(function(campaigns){
+    Campaign.find({}).then(function(campaigns){
 		res.json(campaigns);
 	})
 })
 
 router.get('/:id',function(req,res, next){
-	CampaignModel.findById({_id:req.params.id}).populate('bids').then(function(campaign){
+	Campaign.findById({_id:req.params.id}).populate('bids').then(function(campaign){
 		res.json(campaign);
 	})
 })
