@@ -1,4 +1,10 @@
+
+
 <form id="login-form" name="loginForm" ng-submit="loginForm.$valid && sendLogin(login)">
+    <section class ="loginmsg">
+        <h2>Welcome back!</h2>
+        <h3> Please login in order to bid</h3>
+    </section>
 
     <alert type="danger" ng-show="error">
         {{ error }}

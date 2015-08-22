@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var User = require('./user')
-var Campaign = require('./campaign.model.js')
+var Campaign = require('./campaign.js')
 
 var bidSchema = new mongoose.Schema({
     user_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
@@ -17,4 +17,4 @@ function setPrice(num){
     return num
 };
 
-module.exports = mongoose.model('bid', bidSchema);
+module.exports = bidSchema;

@@ -1,17 +1,39 @@
-app.factory('CampaignFactory',function($http, $interval){
-	function getAllCampaigns(id){
-		//console.log('factory',id);
-		if(id){
-			return $http.get('/api/campaigns/'+id).then(function(response){
-				//console.log(response);
-				return response.data;
-			})
-		}
-		return $http.get('/api/campaigns').then(function(response){
-			//console.log(response);
-			return response.data;
-		})
-	};
+app.factory('CampaignFactory',function($http, $interval, $q, Upload) {
+    this.currentCampaignId = null;
+    function assignCampaignId(id){
+        this.currentCampaignId = id;
+    }
+    function getCampaignId(){
+        return this.currentCampaignId;
+    }
+
+    function getAllCampaigns(id) {
+        //console.log('factory',id);
+        if (id) {
+            this.currentCampaignId = id;
+            return $http.get('/api/campaigns/' + id).then(function (response) {
+                //console.log(response);
+                return response.data;
+            })
+        }
+        return $http.get('/api/campaigns').then(function (response) {
+            //console.log(response);
+            return response.data;
+        })
+    };
+
+    function uploadImg(file) {
+        return Upload.upload({
+            url: '/api/upload/image',
+            file: file
+        });
+    };
+
+    function createCampaign(campaign) {
+        return $http.post('/api/campaigns/new', campaign).then(function (response) {
+            return response.data;
+        })
+    };
 
 
 	function startTimer(exp) {
@@ -38,7 +60,7 @@ app.factory('CampaignFactory',function($http, $interval){
 	        hh = hours+" hour" + (hours >1 ? 's ': ' '),
 	        m = minutes+" minute" + (minutes >1  ? 's ' : ' '),
 	        s = seconds+" second" + (seconds >1  ? 's': '');
-	        
+
 	        //document.querySelector('#countdown').textContent= "Deal ends in "+ dd+hh+m+s;
 	        return  "Deal ends in "+ dd+hh+m+s;
 	    //}, 1000);
@@ -46,6 +68,8 @@ app.factory('CampaignFactory',function($http, $interval){
 
 	return {
 			getAllCampaigns : getAllCampaigns,
-			startTimer: startTimer
+            createCampaign: createCampaign,
+			startTimer: startTimer,
+            uploadImg: uploadImg
 			}
 })

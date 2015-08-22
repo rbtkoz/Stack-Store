@@ -1,20 +1,19 @@
 <nav class="navbar navbar-static-top">
-    <div class="container">
+    <div class="container containeroverride">
         <div class="navbar-header">
-            <logo></logo>
+            <logo ui-sref="home"></logo>
+
         </div>
-        <ul class="nav navbar-nav">
-            <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-                <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
-            </li>
-        </ul>
+        <!--<ul class="nav navbar-nav">-->
+            <!--<li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">-->
+                <!--<a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>-->
+            <!--</li>-->
+        <!--</ul>-->
 
-
-
-
-        <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
-        <button ng-show="!user" ui-sref="signup" class="btn login-button">Sign Up</button>
-        
+        <div class ="navbar-btn">
+            <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
+            <button ng-show="!user" ui-sref="signup" class="btn login-button signup-button">Sign Up</button>
+        </div>
         <div ng-show="user" class="welcome">
             <span>Welcome, {{ user.email }}!</span>
             <a class ="myaccount" ui-sref="user_account">My Account</a>

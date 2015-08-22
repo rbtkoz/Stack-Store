@@ -1,10 +1,15 @@
 'use strict';
-var crypto = require('crypto');
 var mongoose = require('mongoose');
-var campaignSchema = require('./campaign.model.js')
-var bidSchema = require('./bid')
+var crypto = require('crypto');
+var campaignSchema = require('./campaign.js')
 
-var schema = new mongoose.Schema({
+
+var shortenDesc = function(desc) {
+	return desc
+}
+
+
+var userSchema = new mongoose.Schema({
     name: String,
     email: {
         type: String
@@ -27,8 +32,8 @@ var schema = new mongoose.Schema({
     google: {
         id: String
     },
-    campaigns: [campaignSchema],
-    bids: [{type: mongoose.Schema.Types.ObjectId, ref: 'bidSchema'}]
+    campaigns: [{type: mongoose.Schema.Types.ObjectId, ref: 'Campaign'}],
+    bids: [{type: mongoose.Schema.Types.ObjectId, ref: 'Bid'}]
 });
 
 
@@ -46,7 +51,7 @@ var encryptPassword = function (plainText, salt) {
     return hash.digest('hex');
 };
 
-schema.pre('save', function (next) {
+userSchema.pre('save', function (next) {
 
     if (this.isModified('password')) {
         this.salt = this.constructor.generateSalt();
@@ -57,11 +62,11 @@ schema.pre('save', function (next) {
 
 });
 
-schema.statics.generateSalt = generateSalt;
-schema.statics.encryptPassword = encryptPassword;
+userSchema.statics.generateSalt = generateSalt;
+userSchema.statics.encryptPassword = encryptPassword;
 
-schema.method('correctPassword', function (candidatePassword) {
+userSchema.method('correctPassword', function (candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
 });
 
-module.exports = mongoose.model('User', schema);
+module.exports = userSchema;
