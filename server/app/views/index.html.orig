@@ -5,7 +5,11 @@
     <title>Price Dart</title>
     <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="/style.css" />
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+=======
+                
+>>>>>>> 10fe0622d7fe39a9fb566e9e97e00db270fb7071
 </head>
 <body ng-app="FullstackGeneratedApp">
     <navbar></navbar>

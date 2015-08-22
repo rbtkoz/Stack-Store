@@ -29,6 +29,13 @@ router.get('/:id',function(req,res, next){
 
 
 router.post('/new', function(req, res, next){
+    console.log(req.body, "reqbody");
+    CampaignModel.create(req.body, function(err, campaign){
+        if (err) return handleError(err);
+        res.json(req.body)
+    })
+
+<<<<<<< HEAD
 	req.body.owner_id = ObjectId(req.body.owner_id);
 
 	return Campaign.create(req.body).then(function(campaign){
@@ -39,8 +46,10 @@ router.post('/new', function(req, res, next){
             res.json(campaign);
 		})
 	})
-})
 
+=======
+})
+>>>>>>> 88ce3c7861c3a863b157aa42d626cd5b4bb4a84b
 
 router.post('/image',function(req, res, next){
 

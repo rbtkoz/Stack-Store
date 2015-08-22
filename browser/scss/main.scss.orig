@@ -15,13 +15,18 @@ body {
 }
 
 #main {
-  padding-top: 60px;
+  padding-top: 30px;
   width: 100%;
   margin: 0 auto;
 }
 
+<<<<<<< HEAD
 @import 'directives/_main';
 @import 'allcampaigns/main';
+=======
+@import 'directives/main';
+@import 'home/main';
+>>>>>>> 10fe0622d7fe39a9fb566e9e97e00db270fb7071
 @import 'about/main';
 @import 'tutorial/main';
 @import 'login/main';
