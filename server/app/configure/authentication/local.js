@@ -53,20 +53,21 @@ module.exports = function (app) {
         passport.authenticate('local', authCb)(req, res, next);
 
     });
-    
+
     app.post('/checkemail', function(req, res, next){
         User.findOne({email: req.body.email},function(err,user){
             if (err) return next(err);
             //console.log(user)
-            if (user) 
+            if (user)
                 res.send({exists : true});
             else
                 res.send({exists : false});
         });
-    }); 
-    
+    });
+
     app.post('/signup', function(req, res, next){
-        console.log('req.user',req.user);
+        //console.log('req.user',req.user)
+
         User.create(req.body, function(err, user){
             if (err) return next(err);
             res.json(_.omit(user.toJSON(), ['password', 'salt']))
@@ -74,3 +75,17 @@ module.exports = function (app) {
     })
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+

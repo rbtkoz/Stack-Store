@@ -16,7 +16,7 @@ var campaignSchema = new mongoose.Schema({
 	desired_price: Number,
 	bids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bid' }],
 	owner_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-	expDate: [Number] //why is this a number instead of a date?
+	expDate: [Number]
 });
 
 module.exports = campaignSchema;
