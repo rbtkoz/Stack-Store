@@ -3,7 +3,7 @@ var router = require('express').Router();
 var mongoose = require('mongoose');
 var bids = mongoose.model('Bid');
 var Campaign = mongoose.model('Campaign');
-var ObjectId = mongoose.Schema.Types.ObjectId;
+var ObjectId = mongoose.Types.ObjectId;
 var User = mongoose.model('User');
 var fs = require('fs');
 var AWS = require('aws-sdk');
@@ -33,7 +33,7 @@ router.get('/:id',function(req,res, next){
 
 router.post('/new', function(req, res, next){
 	req.body.owner_id = ObjectId(req.body.owner_id);
-
+    console.log('new campaign req',req.body);
 	return Campaign.create(req.body).then(function(campaign){
 		//console.log(campaign);
 		return User.findByIdAndUpdate(campaign.owner_id, { $push :{ campaigns:  ObjectId(campaign._id) }},{'new':true}, function(err,user){
