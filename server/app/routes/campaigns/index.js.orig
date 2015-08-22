@@ -1,12 +1,19 @@
 'use strict';
 var router = require('express').Router();
 var mongoose = require('mongoose');
+<<<<<<< HEAD
 var CampaignModel = mongoose.model('Campaign');
 var fs = require('fs');
 var AWS = require('aws-sdk');
 AWS.config.region = 'us-west-2';
 
 //var multipart = require('connect-multiparty');
+=======
+var Campaign = mongoose.model('Campaign');
+var ObjectId = require('mongoose').Types.ObjectId;
+var User = mongoose.model('User');
+
+>>>>>>> 10fe0622d7fe39a9fb566e9e97e00db270fb7071
 module.exports = router;
 
 //Amazon S3 credentials
@@ -16,19 +23,20 @@ AWS.config.update({ accessKeyId: 'AKIAJXEZ2RS744RPV6JQ', secretAccessKey: 'sDdBW
 
 
 router.get('/',function(req,res, next){
-	CampaignModel.find({}).then(function(campaigns){
+	Campaign.find({}).then(function(campaigns){
 		res.json(campaigns);
 	})
 })
 
 router.get('/:id',function(req,res, next){
-	CampaignModel.findById({_id:req.params.id}).then(function(campaign){
+	Campaign.findById({_id:req.params.id}).then(function(campaign){
 		res.json(campaign);
 	})
 })
 
 
 router.post('/new', function(req, res, next){
+<<<<<<< HEAD
     console.log(req.body, "reqbody");
     CampaignModel.create(req.body, function(err, campaign){
         if (err) return handleError(err);
@@ -56,5 +64,20 @@ router.post('/image',function(req, res, next){
         })
 
     });
+=======
+
+	req.body.owner_id = ObjectId(req.body.owner_id);
+
+	return Campaign.create(req.body).then(function(campaign){
+		//console.log(campaign);
+		return User.findByIdAndUpdate(campaign.owner_id, { $push :{ campaigns:  campaign.toObject() }},{'new':true}, function(err,user){
+			if(err) console.log(err);
+			console.log(campaign);
+            res.json(campaign);
+		})
+	})
+
+
+>>>>>>> 10fe0622d7fe39a9fb566e9e97e00db270fb7071
 
 })

@@ -7,14 +7,27 @@ navbar {
 
   .container {
     width: 91%;
-    max-width: 1340px;
+    max-width: 1600px;
     padding-top: 20px;
   }
 
+  .containeroverride {
+    padding-top:5px;
+    padding-left:20px;
+    margin-left:0;
+
+  }
   logo {
-    margin-top: 5px;
+    margin-top:10px;
     margin-right: 20px;
-    width: 40px;
+    padding:5px;
+    border: black 1px solid;
+    border-radius: 5px;
+  }
+
+  .navbar-btn {
+    float:right;
+    padding-top:10px;
   }
 
   a {
@@ -45,6 +58,10 @@ navbar {
     outline: none !important;
   }
 
+  .signup-button{
+    margin-right:10px;
+  }
+
 
   .welcome {
     float: right;
@@ -58,10 +75,15 @@ navbar {
 
     .logout{
       color: tomato;
+      padding-right:5px;
+      border: 1px solid dodgerblue;
+      background: none;
     }
     .myaccount{
       color:#000066;
       padding-right:5px;
+      border: 1px solid dodgerblue;
+      background: none;
 
     }
   }

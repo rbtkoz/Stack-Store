@@ -1,7 +1,10 @@
 
-<div class = "row">
+
+<div ng-show="!user" class ="alert alert-danger">You have to be logged in to access this. Please log in or sign up:)</div>
+
+<div ng-show ="user" class ="row">
     <div class ="col-md-8">
-        <h2>Hi {{user.email}}</h2>
+        <h2>Hi {{user.name}}</h2>
         <h2>Create a new campaign</h2>
     </div>
     <div class ="col-md-4">
@@ -9,39 +12,47 @@
     </div>
 </div>
 
-<div class ="row">
-    <div class ="col-md-10">
-        <form name="newCampaignForm" ng-submit="submit(campaign)">
-            <div class="form-error" ng-if="newCampaignForm.$invalid && newCampaignForm.$submitted">Please fill out the fields!</div>
+<div ng-show="loading" class="loading"><img src="https://d13yacurqjgara.cloudfront.net/users/12755/screenshots/1037374/hex-loader2.gif">Uploading...</div>
 
+<div ng-show ="user" class ="row">
+    <div class ="col-md-10">
+        <form name="newCampaignForm" ng-submit="newCampaignForm.$valid && submit(campaign)" novalidate>
+            <!--<div class="form-error alert alert-danger" ng-if="newCampaignForm.$invalid && newCampaignForm.$submitted">Please fill out the fields!</div>-->
             <div class="form-group">
                 <label>Title:</label>
-                <div class ="form-error" ng-if="newCampaignForm.title.$error.minlength && newCampaignForm.$submitted" >You need to put in a title</div>
+
+                <div class ="form-error alert alert-danger" ng-if="newCampaignForm.title.$error.required && newCampaignForm.$submitted" >You need to put in a title</div>
                 <input type ="text" placeholder="My awesome product" ng-model="campaign.title" name="title" ng-minlength="1" required /><br />
             </div>
 
             <div class="form-group">
                 <label>Description:</label>
-                <div class ="form-error" ng-if="newCampaignForm.description.$error.minlength && newCampaignForm.$submitted">Please fill out description</div>
-                <input type='text' placeholder= "The best product ever" ng-model="campaign.longDesc" name ="longDesc" ng-minlength="20" required/><br />
+                <div class ="form-error alert alert-danger" ng-if="newCampaignForm.longDesc.$error.required && newCampaignForm.$submitted">Please fill out description</div>
+                <input type='text' placeholder= "The best product ever" ng-model="campaign.longDesc" name ="longDesc" ng-minlength="20" required /><br />
             </div>
 
             <div class ="form-group">
                 <label>Duration:</label>
-                <div class ="form-error" ng-if="newCampaignForm.duration.$error.minlength && newCampaignForm.$submitted">Please fill out description</div>
-                <input type="number" placeholder="5 days" ng-model="campaign.duration" name ="duration" required/><br />
+                <div class ="form-error alert alert-danger" ng-if="newCampaignForm.duration.$error.required && newCampaignForm.$submitted">Please fill out duration</div>
+                <input type="number" placeholder="5 days" ng-model="campaign.duration" name ="duration" ng-minlength="1" required /><br />
             </div>
 
             <div class ="form-group">
                 <label>Images:</label>
-                <input type='file' ng-model="campaign.images" name="images" multiple /><br />
+                <div class ="form-error alert alert-danger" ng-if="!upload.data&& newCampaignForm.$submitted">Please add an image</div>
+                <div class="btn btn-primary" ngf-select ng-model="file" ngf-pattern="'image/*" accept="image/*">Choose</div>
+                <div ng-if ="upload.data" class="uploadfile alert alert-success">{{upload.data}}</div>
             </div>
 
-            <button class="btn btn-success" type="submit">Create</button>
+            <button class="btn btn-success" ng-disabled="loading" type="submit">Create</button>
+
+        </div>
         </form>
     </div>
+
     <pre>form={{campaign | json}}</pre>
     <pre>master ={{master | json}}</pre>
     <pre>{{user | json}} </pre>
+    <pre>{{upload | json}}</pre>
 
 </div>
