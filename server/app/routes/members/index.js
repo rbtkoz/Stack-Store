@@ -5,18 +5,14 @@ module.exports = router;
 var _ = require('lodash');
 var User = mongoose.model('User');
 
-var ensureAuthenticated = function (req, res, next) {
-    if (req.isAuthenticated()) {
-        next();
-    } else {
-        res.status(401).end();
-    }
-};
 
-router.get('/:id', ensureAuthenticated, function (req, res) {
+router.get('/:id', function (req, res) {
 
-    User.findById(req.params.id, function(err, user){
-        res.send(user);
-    })
+    User.findById(req.params.id)
+        .populate('campaigns')
+        .exec(function(err, user){
+
+            res.send(user);
+        });
 
 });

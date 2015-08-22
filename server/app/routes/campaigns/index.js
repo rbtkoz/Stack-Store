@@ -29,13 +29,18 @@ router.get('/:id',function(req,res, next){
 
 
 router.post('/new', function(req, res, next){
-    console.log(req.body, "reqbody");
-    CampaignModel.create(req.body, function(err, campaign){
-        if (err) return handleError(err);
-        res.json(req.body)
-    })
+	req.body.owner_id = ObjectId(req.body.owner_id);
 
+	return Campaign.create(req.body).then(function(campaign){
+		//console.log(campaign);
+		return User.findByIdAndUpdate(campaign.owner_id, { $push :{ campaigns:  ObjectId(campaign._id) }},{'new':true}, function(err,user){
+			if(err) console.log(err);
+			console.log(campaign);
+            res.json(campaign);
+		})
+	})
 })
+
 
 router.post('/image',function(req, res, next){
 

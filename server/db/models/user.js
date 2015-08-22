@@ -32,7 +32,7 @@ var userSchema = new mongoose.Schema({
     google: {
         id: String
     },
-    campaigns: [campaignSchema],
+    campaigns: [{type: mongoose.Schema.Types.ObjectId, ref: 'Campaign'}],
     bids: [{type: mongoose.Schema.Types.ObjectId, ref: 'Bid'}]
 });
 

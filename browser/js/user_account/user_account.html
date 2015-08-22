@@ -1,35 +1,44 @@
 
-<div class ="row">
+<nav class="navbar navbar-default">
+    <h2>Welcome {{user.name | capitalize}}</h2>
+    <button ui-sref="newcampaign" type="button" class="btn btn-default navbar-btn">New Campaign</button>
+    <button ui-sref="home" type="button" class="btn btn-default navbar-btn">View Marketplace</button>
+</nav>
 
-    <div class ="col-md-8">
-        <h2>Welcome {{user.email}}</h2>
-    </div>
+<div col-md-6>
+<h3>Bid History</h3>
 
-    <div class ="col-md-2">
-        <button ui-sref="newcampaign" class ="btn btn-success">Create Campaign</button>
-    </div>
-
-    <div class = "col-md-2">
-        <button ui-sref="home" class ="btn btn-primary">Home</button>
-
-    </div>
-
+<table class="table-striped table-bordered">
+    <thead>
+        <td>Campaign</td>
+        <td>Campaign End Date</td>
+        <td>Your Bid</td>
+    </thead>
+    <tbody>
+        <tr ng-repeat="bid in bids">
+            <td>{{bid.campaign_id.title}}</td>
+            <td>{{bid.campaign_id.expDate}}</td>
+            <td>{{bid.bidPrice}}</td>
+        </tr>
+    </tbody>
+</table>
 </div>
 
-<div class ="row">
+<div col-md-6>
+    <h3>My Campaigns</h3>
 
-    <div class ="col-md-8">
-        <ul ng-repeat="bid in bids">
-            <li>{{bid._id}}</li>
-        </ul>
-
-    </div>
-
-    <div class ="col-md-4">
-        <ul ng-repeat="bid in bids">
-            <li>{{bid.bidPrice}}</li>
-        </ul>
-    </div>
-
+    <table class="table-striped table-bordered col-md-6">
+        <thead>
+        <td>Campaigns</td>
+        <td>Campaign End Date</td>
+        <td>Total Bids</td>
+        </thead>
+        <tbody>
+            <tr ng-repeat="campaign in user.campaigns">
+                <td>{{campaign.title}}</td>
+                <td>{{campaign.expDate}}</td>
+                <td>{{campaign.bids.length}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-
