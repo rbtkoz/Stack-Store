@@ -33,15 +33,25 @@ $mobile-max:991px;
     }
   }
 
+  .suggest{
+    color:gray;
+    font-weight: 2px;
+    span{
+      color: red;
+    }
+  }
+
   .img-group{
     @include lgscreen{
       width: 50vw;
       display:table-cell;
       padding-right:2vw;
+      margin:0 auto;
     }
 
     .primaryPic{
-      width:100%;
+      max-width:100%;
+      display:block;
       margin:0 auto;
       @include lgscreen {
         height:400px;

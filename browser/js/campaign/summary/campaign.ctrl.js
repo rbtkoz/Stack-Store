@@ -1,8 +1,9 @@
-app.controller('CampaignCtrl',function($scope, CampaignFactory, $interval, $stateParams){
+app.controller('CampaignCtrl',function($scope, AuthService,CampaignFactory, $interval, $stateParams){
     var timer;
     CampaignFactory.getAllCampaigns($stateParams.id).then(function (data) {
     	//console.log(data)
         $scope.products = data;
+        $scope.login=AuthService.isAuthenticated();
 
         //CampaignFactory.startTimer(data.expDate);
 
@@ -14,9 +15,11 @@ app.controller('CampaignCtrl',function($scope, CampaignFactory, $interval, $stat
         $scope.startTimer=CampaignFactory.startTimer;
         var exp=new Date(data.expDate[0],data.expDate[1]-1,data.expDate[2]+1);
 
-        /*if(exp<=new Date()){
-
-        }*/
+        if(exp<=new Date()){
+            $scope.active=false;
+        }else{
+            $scope.active=true;
+        }
         $scope.countdown = 'Loading...';
 
 	    timer=$interval(function(){

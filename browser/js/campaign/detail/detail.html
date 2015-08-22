@@ -17,10 +17,21 @@
 			<p>Total Bids: {{products.bids.length}}</p>
 		<!-- 	<p>Shipping Cost: {{products.shipCost}}</p>
 			<p>Estimate Arrival Days: {{products.shipLength}}</p>
-		 -->	<form ng-submit>
-		    	Bid Price: <input type='number' min='0' step='1'placeholder='$'>
-		    	<button ui-sref='login' class='btn btn-primary'>Bid</button>
-		    </form>
+		 -->	
+     <p class='suggest' ng-show='!active'>
+     Click <span ui-sref='home'>here</span> to browse more campaigns.
+     </p>
+     <p class='suggest' ng-show='!login && active'>
+       You need to log in to bid campaigns.
+       <br>
+       Click <span ui-sref='login'>here</span> to log in.
+     </p>
+     <section ng-show='login && active' class='quick-bid description' ng-controller="bidsCtrl">
+          <form ng-submit="submitBid(bid, products._id)">
+            <input ng-model="bid.value" type='number' min='0' step='1'placeholder='$'>
+            <input type="submit" class='btn btn-primary' value="Bid">
+          </form>
+      </section>
             <br>
           <button ui-sref="analytics({id:products._id})" class="'btn btn-warning">See Bid Analysis</button>
 		</div>
