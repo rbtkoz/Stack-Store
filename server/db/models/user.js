@@ -33,6 +33,7 @@ var userSchema = new mongoose.Schema({
         id: String
     },
     campaigns: [{type: mongoose.Schema.Types.ObjectId, ref: 'Campaign'}],
+    reviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}],
     bids: [{type: mongoose.Schema.Types.ObjectId, ref: 'Bid'}]
 });
 

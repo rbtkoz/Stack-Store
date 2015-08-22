@@ -6,3 +6,4 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User', require('./user'));
 var Bid = mongoose.model('Bid', require('./bid'));
 var Campaign = mongoose.model('Campaign', require('./campaign'));
+var Review = mongoose.model('Review', require('./review'));
