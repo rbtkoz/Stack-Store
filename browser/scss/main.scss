@@ -20,8 +20,7 @@ body {
   margin: 0 auto;
 }
 
-@import 'directives/_main';
-@import 'allcampaigns/main';
+@import 'directives/main';
 @import 'about/main';
 @import 'tutorial/main';
 @import 'login/main';
