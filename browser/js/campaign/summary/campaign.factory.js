@@ -30,6 +30,7 @@ app.factory('CampaignFactory',function($http, $interval, $q, Upload) {
     };
 
     function createCampaign(campaign) {
+        console.log(campaign, "campaign!!!!!!!!!!!");
         return $http.post('/api/campaigns/new', campaign).then(function (response) {
             return response.data;
         })
