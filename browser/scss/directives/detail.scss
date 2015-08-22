@@ -45,7 +45,7 @@ $mobile-max:991px;
       margin:0 auto;
       @include lgscreen {
         height:400px;
-        max-width: 100%;
+        max-width: 80%;
       }
 
     }
@@ -83,11 +83,6 @@ $mobile-max:991px;
         display: table-cell;
         border-bottom: 60px solid white;
       }
-
-    #countdown{
-
-
-    }
   }
 
   div.product-description{
