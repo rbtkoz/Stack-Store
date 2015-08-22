@@ -2,7 +2,7 @@
 var router = require('express').Router();
 var mongoose = require('mongoose');
 var CampaignModel = mongoose.model('Campaign');
-var bids = mongoose.model('bid');
+var bids = mongoose.model('Bid');
 var fs = require('fs');
 var AWS = require('aws-sdk');
 AWS.config.region = 'us-west-2';
