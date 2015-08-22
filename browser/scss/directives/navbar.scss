@@ -6,23 +6,33 @@ navbar {
   box-shadow: 1px 1px 14px -3px black;
 
   .container {
-    width: 91%;
+    width: 100%;
     max-width: 1600px;
     padding-top: 20px;
+
   }
 
   .containeroverride {
     padding-top:5px;
-    padding-left:20px;
     margin-left:0;
+    padding-left:0;
 
   }
   logo {
-    margin-top:10px;
-    margin-right: 20px;
-    padding:5px;
-    border: black 1px solid;
-    border-radius: 5px;
+    margin-top: 10px;
+    padding-right: 50px;
+    margin-right: 0px;
+    padding: 5px 5px 5px 40px;
+    /* font-weight: 100; */
+    font-family: Roboto;
+    /* border: black 1px solid; */
+    /* border-radius: 5px; */
+    /* color: rgba(128, 128, 128, 0); */
+    color: white;
+    background-color: dodgerblue;
+    border-radius: 0px 8px 8px 0;
+    blur: 5px;
+    padding-right: 100px;
   }
 
   .navbar-btn {
@@ -51,7 +61,6 @@ navbar {
   }
 
   .login-button {
-    float: right;
     border: 1px solid black;
     margin-top: 10px;
     background: none;
@@ -74,18 +83,23 @@ navbar {
     }
 
     .logout{
-      color: tomato;
-      padding-right:5px;
-      border: 1px solid dodgerblue;
-      background: none;
+      color: white;
+      background: darkgoldenrod;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
     }
+
     .myaccount{
-      color:#000066;
-      padding-right:5px;
-      border: 1px solid dodgerblue;
-      background: none;
+      color: white;
+      margin-right:5px;
+      background: dodgerblue;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+    }
 
     }
   }
 
-}
+
