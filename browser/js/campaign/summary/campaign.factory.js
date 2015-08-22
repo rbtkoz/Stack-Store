@@ -1,8 +1,16 @@
 app.factory('CampaignFactory',function($http, $interval, $q, Upload) {
+    this.currentCampaignId = null;
+    function assignCampaignId(id){
+        this.currentCampaignId = id;
+    }
+    function getCampaignId(){
+        return this.currentCampaignId;
+    }
 
     function getAllCampaigns(id) {
         //console.log('factory',id);
         if (id) {
+            this.currentCampaignId = id;
             return $http.get('/api/campaigns/' + id).then(function (response) {
                 //console.log(response);
                 return response.data;
