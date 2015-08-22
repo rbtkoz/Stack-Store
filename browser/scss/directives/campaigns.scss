@@ -2,29 +2,40 @@
     padding: 0;
     margin: 0;
     list-style: none;
+      
+    @include lgscreen{
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-wrap: wrap;
+      flex-direction:row;
+      flex-grow:1;
 
-/*    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;*/
-    display: -webkit-flex;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    flex-direction: row;
-    -webkit-flex-direction: row;
-    flex-grow:1;
+    }
+      justify-content: space-around;
+
 }
 
 
 
 campaign {
+
   font-family: 'Roboto', sans-serif;
   margin:10px;
   text-align: center;
 
   section.frame{
+    border-radius: 10px;
     background-color: #C0C0C0;
-    
+    @include lgscreen{
+      max-height: 100%;
+    }
+    @include smscreen{
+      margin:0 15%;
+    }   
      .title {
       font-size:1.4em;
       font-weight: bold;
@@ -33,9 +44,16 @@ campaign {
     }
 
     img {
-      margin-bottom: 0px;
-      height: 320px;
-      width: 350px;
+      height:400px;
+      max-width: 90%;
+      margin:20px auto;
+      display: inline-block;
+      @include lgscreen{
+        margin:10px auto;
+        height: 320px;
+        width: 350px;
+      }
+      
     }
 
 

@@ -78,8 +78,8 @@ var seedCampaign = function () {
 
 connectToDb.then(function () {
 
-    return seedCampaign();
-   /*User.findAsync({}).then(function (users) {
+    //return seedCampaign();
+   User.findAsync({}).then(function (users) {
 
         if (users.length === 0) {
             return seedUsers();
@@ -93,5 +93,5 @@ connectToDb.then(function () {
     }).catch(function (err) {
         console.error(err);
         process.kill(1);
-    });*/
+    });
 });
