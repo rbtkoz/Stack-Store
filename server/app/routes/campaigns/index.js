@@ -1,6 +1,7 @@
 'use strict';
 var router = require('express').Router();
 var mongoose = require('mongoose');
+var bids = mongoose.model('Bid');
 var Campaign = mongoose.model('Campaign');
 var ObjectId = mongoose.Schema.Types.ObjectId;
 var User = mongoose.model('User');
@@ -24,7 +25,7 @@ router.get('/',function(req,res, next){
 })
 
 router.get('/:id',function(req,res, next){
-    Campaign.findById({_id:req.params.id}).then(function(campaign){
+	Campaign.findById({_id:req.params.id}).populate('bids').then(function(campaign){
 		res.json(campaign);
 	})
 })
