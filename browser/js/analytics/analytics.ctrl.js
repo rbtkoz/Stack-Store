@@ -1,9 +1,72 @@
 //See: https://github.com/pablojim/highcharts-ng
 app.controller('AnalyticsCtrl', function ($scope, CampaignFactory, $stateParams) {
 
-    CampaignFactory.getAllCampaigns($stateParams.id).then(function (data) {
-        console.log(data);
-        $scope.campaign = data;
+    CampaignFactory.getAllCampaigns($stateParams.id).then(function (prod) {
+        $scope.campaign = prod;
+
+        var bids =[]
+
+        for(var i in prod.bids){
+            bids.push(prod.bids[i].bidPrice);
+        }
+
+        bids.sort(function(a,b){return a-b});
+        var bidCount=[], bidPrices=[], i=0,count=1;
+        while(i<bids.length){
+            var count=1;
+            while(bids[i]===bids[i+1]){
+                count++;
+                i++;
+            }
+            bidCount.push(count);
+            bidPrices.push(bids[i]);
+            i++;
+        }
+        console.log(bidPrices,bidCount);
+        $scope.chartConfig = {
+            options: {
+                chart: {
+                    zoomType: 'xy'
+                }
+            },
+            series: [{
+                name:'Bids',
+                type:'column',
+                data: bidCount
+            },{
+                name:'Bids',
+                type:'spline',
+                data: bidCount
+            }],
+            title: {
+                text: prod.title
+            },
+            subtitle: {
+                text: 'Total Bids: '+prod.bids.length
+            },
+            xAxis: {
+                categories: bidPrices,
+                crosshair: true,
+                labels:{
+                    format:'${value}'
+                }
+            },
+            yAxis:[{ // Primary yAxis
+                labels: {
+                    format: '{value} Bids',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                },
+                title: {
+                    text: 'Number of Bids',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                }
+            }],
+            loading: false
+        }
     });
 
     $scope.addPoints = function () {
@@ -21,7 +84,7 @@ app.controller('AnalyticsCtrl', function ($scope, CampaignFactory, $stateParams)
             data: rnd
         })
     }
-
+    
     $scope.removeRandomSeries = function () {
         var seriesArray = $scope.chartConfig.series
         var rndIdx = Math.floor(Math.random() * seriesArray.length);
@@ -32,21 +95,6 @@ app.controller('AnalyticsCtrl', function ($scope, CampaignFactory, $stateParams)
         this.chartConfig.loading = !this.chartConfig.loading
     }
 
-    $scope.chartConfig = {
-        options: {
-            chart: {
-                type: 'line',
-                zoomType: 'x'
-            }
-        },
-        series: [{
-            data: [10, 15, 12, 8, 7, 1, 1, 19, 15, 10]
-        }],
-        title: {
-            text: 'Hello'
-        },
-        xAxis: {currentMin: 0, currentMax: 10, minRange: 1},
-        loading: false
-    }
+
 
 });
