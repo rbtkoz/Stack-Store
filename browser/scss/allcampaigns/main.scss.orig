@@ -1,4 +1,10 @@
+<<<<<<< HEAD:browser/scss/allcampaigns/main.scss
+@import "countdown";
+
+#allcampaigns {
+=======
 #home {
+>>>>>>> 10fe0622d7fe39a9fb566e9e97e00db270fb7071:browser/scss/home/main.scss
   logo {
     padding-top: 30px;
     width: 150px;

@@ -1,0 +1,108 @@
+@import "logo";
+@import "navbar";
+@import "detail";
+@import "campaigns";
+@import "home";
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url(http://fonts.googleapis.com/css?family=Damion);
+
+<<<<<<< HEAD
+$break-sm: 321px;
+$break-md: 768px;
+$break-lg: 960px;
+
+*{
+  box-sizing: border-box;
+}
+div#main{
+
+  padding:0;
+  width:100%;
+  h1{
+    padding: 10px 20px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 40px;
+    background-color: dodgerblue;
+    width: 40%;
+    border-radius: 0 8px 8px 0;
+    color: white;
+    font-weight: 300;
+  }
+
+  article{
+    padding-left:20px;
+    width:50%;
+
+  }
+
+  .row{
+    padding:20px;
+    width: 100vw;
+  }
+
+  .gallery{
+    padding-left: 20px;
+  }
+  .img-group {
+    padding-right: 20px;
+    width:30%;
+    img{
+      padding: 0;
+    }
+  }
+
+@media (min-width: 481px){
+  .row{
+    display: table;
+  }
+  .img-group{
+    overflow-y:hidden;
+  }
+  .primaryPic{
+    max-width: 100%;
+    max-height: 100%;
+  }
+  div.detail{
+    height:100%;
+    font-size:20px;
+  }
+  article{
+    font-size:1.5em;
+  }
+}
+
+@media (max-width: 480px){
+  .primaryPic{
+    height:100%;
+    overflow:hidden;
+  }
+  div.detail{
+    font-size:10px;
+  }
+
+  article{
+    font-size:1em;
+  }
+}
+
+
+  div.detail{
+    float:left;
+    font-family: 'Roboto', Verdana;
+    height:100%;
+
+  }
+
+
+  div.product-description{
+    float:left;
+    width:100%;
+    article{
+      font-family: 'Roboto';
+    }
+  }
+
+}
+=======
+>>>>>>> 10fe0622d7fe39a9fb566e9e97e00db270fb7071
