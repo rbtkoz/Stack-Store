@@ -10,12 +10,13 @@
         <div class ="desc">
            <!--<span>Description</span>-->
             <p>{{product.shortDesc}}</p>
+            <br>
+            <p>Campaign Ends {{product.expDate.slice(1).join('/')}}/{{product.expDate[0]}}</p>
         </div>
 
-
         <div class ="timeend">
-            <div>Ends in</div>
-                <p>{{product.duration}}</p>
+            <div>Bids</div>
+                <p>{{product.bids.length}}</p>
         </div>
 
     </section>
