@@ -1,5 +1,6 @@
-
-
+#member{
+  padding-left: 20%;
+}
 #home {
   height: 600px;
   display: flex;
@@ -44,12 +45,19 @@
   }
 
   button{
-    font-size: 2.5rem ;
-    width: 40%;
-    height: 100px;
-    border: dodgerblue solid 2px;
-    background:rgba(255,255,255,0.5);
+    font-size: 2.5em ;
+    font-weight: 200;
+    color:white;
+    width: 30%;
+    height: 70px;
+    //border: rgba(30, 144, 255, .5) solid 2px;
+    background: darkgoldenrod;
+    opacity: .9;
     overflow: hidden;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: none;
+    border:none;
+
 
   }
 

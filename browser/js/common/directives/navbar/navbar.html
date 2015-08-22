@@ -13,11 +13,12 @@
         <div class ="navbar-btn">
             <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
             <button ng-show="!user" ui-sref="signup" class="btn login-button signup-button">Sign Up</button>
-        </div>
-        <div ng-show="user" class="welcome">
-            <span>Welcome, {{ user.email }}!</span>
-            <a class ="myaccount" ui-sref="user_account">My Account</a>
-            <a class="logout" ng-click="logout()">Logout</a>
+
+            <div ng-show="user" class="welcome">
+                <span>Welcome, {{ user.email }}!</span>
+                <a class =" btn myaccount" ui-sref="user_account">My Account</a>
+                <a class="btn logout" ng-click="logout()">Logout</a>
+            </div>
         </div>
     </div>
 </nav>
